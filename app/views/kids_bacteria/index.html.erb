@@ -1,9 +1,0 @@
-<h1>Kids Bacteria</h1>
-
-<ul>
-  <% @kids_bacteria.each do |kb| %>
-    <li><%= link_to "Kid: #{kb.kid_nickname}, Bacteria: #{kb.bacteria_id}, Status: #{kb.status}", kb %></li>
-  <% end %>
-</ul>
-
-<%= link_to 'New Kids Bacteria', new_kids_bacterium_path %>
