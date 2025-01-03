@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   devise_for :kids, controllers: {
-    sessions: "kids/sessions"
-  }
+  sessions: "kids/sessions",
+  registrations: "registrations"
+}
+
   root "kids#index"
   get "signup", to: "kids#new"
   post "signup", to: "kids#create"
