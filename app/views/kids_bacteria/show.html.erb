@@ -1,0 +1,8 @@
+<h1>Kids Bacterium</h1>
+
+<p>Kid: <%= @kids_bacterium.kid_nickname %></p>
+<p>Bacteria: <%= @kids_bacterium.bacteria_id %></p>
+<p>Status: <%= @kids_bacterium.status ? 'Visible' : 'Hidden' %></p>
+
+<%= link_to 'Edit', edit_kids_bacterium_path(@kids_bacterium) %> |
+<%= link_to 'Back', kids_bacteria_path %>

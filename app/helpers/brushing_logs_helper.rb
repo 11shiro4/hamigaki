@@ -1,0 +1,2 @@
+module BrushingLogsHelper
+end

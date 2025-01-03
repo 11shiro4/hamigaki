@@ -1,0 +1,9 @@
+<h1>Bacteria</h1>
+
+<ul>
+  <% @bacteria.each do |bacterium| %>
+    <li><%= link_to "Name: #{bacterium.name}, Image: #{bacterium.image_path}", bacterium %></li>
+  <% end %>
+</ul>
+
+<%= link_to 'New Bacterium', new_bacterium_path %>

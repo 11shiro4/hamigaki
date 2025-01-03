@@ -1,0 +1,9 @@
+<h1>Brushing Logs</h1>
+
+<ul>
+  <% @brushing_logs.each do |log| %>
+    <li><%= link_to "Kid: #{log.kid_nickname}, Date: #{log.date}, Time of Day: #{log.time_of_day}", log %></li>
+  <% end %>
+</ul>
+
+<%= link_to 'New Brushing Log', new_brushing_log_path %>

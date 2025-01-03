@@ -1,0 +1,9 @@
+<h1>Kids</h1>
+
+<ul>
+  <% @kids.each do |kid| %>
+    <li><%= link_to kid.nickname, kid %></li>
+  <% end %>
+</ul>
+
+<%= link_to 'New Kid', new_kid_path %>
