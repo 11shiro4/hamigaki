@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  resources :kids
+  root "kids#index"
+  get "signup", to: "kids#new"
+  post "signup", to: "kids#create"
+  resources :kids, only: [ :index, :show, :new, :create, :edit, :update ]
   resources :brushing_logs
   resources :bacteria
   resources :kids_bacteria
