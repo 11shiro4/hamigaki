@@ -1,4 +1,7 @@
 class Kid < ApplicationRecord
+  devise :database_authenticatable, :registerable,
+  :recoverable, :rememberable, :validatable
+
   validates :nickname, presence: true, uniqueness: true
   validates :age, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
