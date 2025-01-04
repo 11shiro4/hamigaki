@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_01_01_122142) do
+ActiveRecord::Schema[8.0].define(version: 2025_01_04_055501) do
   create_table "bacteria", charset: "utf8mb3", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
@@ -30,6 +30,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_01_122142) do
     t.integer "age", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "email"
+    t.index ["email"], name: "index_kids_on_email", unique: true
   end
 
   create_table "kids_bacteria", charset: "utf8mb3", force: :cascade do |t|
