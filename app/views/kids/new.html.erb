@@ -1,10 +1,9 @@
-<h1>とうろく</h1>
+<h2>サインアップ</h2>
 
 <%= form_with(model: @kid, local: true) do |form| %>
   <% if @kid.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@kid.errors.count, "error") %> prohibited this kid from being saved:</h2>
-
+      <h2><%= @kid.errors.count %> つ のエラーがはっせいしたよ</h2>
       <ul>
         <% @kid.errors.full_messages.each do |message| %>
           <li><%= message %></li>
@@ -14,17 +13,16 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :nickname %>
+    <%= form.label :nickname, "ニックネーム" %>
     <%= form.text_field :nickname %>
   </div>
 
   <div class="field">
-    <%= form.label :age %>
+    <%= form.label :age, "ねんれい" %>
     <%= form.number_field :age %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "OK" %>
   </div>
 <% end %>
-

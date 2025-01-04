@@ -3,13 +3,11 @@ ja:
     format: "%{attribute} %{message}"
     messages:
       blank: "を入力してください"
-      not_a_number: "は数字でなければなりません"
+      not_a_number: "は数字で入力してください"
 
   activerecord:
-    models:
-      user: "ユーザー"
     attributes:
-      user:
+      kid:
         email: "メールアドレス"
         password: "パスワード"
         password_confirmation: "パスワード（かくにんよう）"
@@ -18,7 +16,7 @@ ja:
 
     errors:
       models:
-        user:
+        kid:
           attributes:
             email:
               blank: "メールアドレスを入力してください"
