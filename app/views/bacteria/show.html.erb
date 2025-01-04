@@ -1,7 +1,0 @@
-<h1>Bacterium</h1>
-
-<p>Name: <%= @bacterium.name %></p>
-<p>Image: <%= image_tag @bacterium.image_path if @bacterium.image_path.present? %></p>
-
-<%= link_to 'Edit', edit_bacterium_path(@bacterium) %> |
-<%= link_to 'Back', bacteria_path %>
