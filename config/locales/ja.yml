@@ -1,0 +1,31 @@
+ja:
+  errors:
+    format: "%{attribute} %{message}"
+    messages:
+      blank: "を入力してください"
+      not_a_number: "は数字でなければなりません"
+
+  activerecord:
+    models:
+      user: "ユーザー"
+    attributes:
+      user:
+        email: "メールアドレス"
+        password: "パスワード"
+        password_confirmation: "パスワード（かくにんよう）"
+        nickname: "ニックネーム"
+        age: "ねんれい"
+
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              blank: "メールアドレスを入力してください"
+            password:
+              blank: "パスワードを入力してください"
+            nickname:
+              blank: "ニックネームを入力してください"
+            age:
+              blank: "ねんれいを入力してください"
+              not_a_number: "ねんれいは数字で入力してください"
