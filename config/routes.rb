@@ -1,16 +1,13 @@
 Rails.application.routes.draw do
-  devise_for :kids, controllers: {
-  sessions: "kids/sessions",
-  registrations: "registrations"
-}
+  devise_for :kids
 
   root "kids#index"
   get "signup", to: "kids#new"
   post "signup", to: "kids#create"
   resources :kids, only: [ :index, :show, :new, :create, :edit, :update ]
-  resources :brushing_logs
-  resources :bacteria
-  resources :kids_bacteria
+  # resources :brushing_logs
+  # resources :bacteria
+  # resources :kids_bacteria
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

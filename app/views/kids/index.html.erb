@@ -1,4 +1,4 @@
-<h1>Kids</h1>
+<h1>はみがきをはじめる</h1>
 
 <ul>
   <% @kids.each do |kid| %>
@@ -6,5 +6,12 @@
   <% end %>
 </ul>
 
-<%= link_to 'New Kid', new_kid_path %>
+<%= link_to 'とうろく', new_kid_path %>
 
+<div>
+  <% if kid_signed_in? %>
+    <%= link_to 'ログアウト', destroy_kid_session_path, method: :delete %>
+  <% else %>
+    <%= link_to 'ログイン', new_kid_session_path %>
+  <% end %>
+</div>
