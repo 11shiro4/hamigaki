@@ -1,28 +1,39 @@
-<h2>サインアップ</h2>
+<h2>しんきとうろく</h2>
 
-<%= form_with(model: @kid, local: true) do |form| %>
+<%= form_for(@kid) do |f| %>
   <% if @kid.errors.any? %>
     <div id="error_explanation">
       <h2><%= @kid.errors.count %> つ のエラーがはっせいしたよ</h2>
       <ul>
-        <% @kid.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
+      <% @kid.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :nickname, "ニックネーム" %>
-    <%= form.text_field :nickname %>
+  <div>
+    <%= f.label :email, "メールアドレス" %>
+    <%= f.email_field :email, autofocus: true %>
   </div>
-
-  <div class="field">
-    <%= form.label :age, "ねんれい" %>
-    <%= form.number_field :age %>
+  <div>
+    <%= f.label :nickname, "ニックネーム" %>
+    <%= f.text_field :nickname %>
   </div>
-
-  <div class="actions">
-    <%= form.submit "OK" %>
+  <div>
+    <%= f.label :age, "ねんれい" %>
+    <%= f.number_field :age %>
+  </div>
+  <div>
+    <%= f.label :password, "パスワード" %>
+    <%= f.password_field :password, autocomplete: "new-password" %>
+  </div>
+  <div>
+    <%= f.label :password_confirmation, "パスワード（かくにんよう）" %>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  </div>
+  <div>
+    <%= f.submit "OK" %>
   </div>
 <% end %>
+<%= link_to "ログイン", new_kid_session_path %>
