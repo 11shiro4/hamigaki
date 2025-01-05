@@ -1,0 +1,12 @@
+<h2>あたらしいhamigakiのきろくをついか</h2>
+
+<%= form_with(model: [current_kid, BrushingRecord.new]) do |form| %>
+  <div>
+    <%= form.label :brushed_at, "はみがきしたじかん" %>
+    <%= form.datetime_select :brushed_at %>
+  </div>
+
+  <div>
+    <%= form.submit "OK" %>
+  </div>
+<% end %>

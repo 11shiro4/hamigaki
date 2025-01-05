@@ -1,4 +1,6 @@
 class BrushingLogsController < ApplicationController
+  before_action :authenticate_kid!
+
   def index
     @brushing_logs = BrushingLog.all
   end

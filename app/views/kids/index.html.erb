@@ -1,14 +1,17 @@
 <h1>hamigakiへようこそ</h1>
 
 <ul>
-  <% @kids.each do |kid| %>
-    <li><%= link_to kid.nickname, kid %></li>
+  <% if kid_signed_in? %>
+    <li><%= link_to current_kid.nickname, current_kid %></li>
+  <% else %>
+    <% @kids.each do |kid| %>
+      <li><%= link_to kid.nickname, kid %></li>
+    <% end %>
   <% end %>
 </ul>
 
 <div>
   <% if kid_signed_in? %>
-    <p><%= current_kid.nickname %>さんがログインしています</p>
     <%= link_to 'ログアウト', destroy_kid_session_path, data: { turbo_method: :delete } %>
   <% else %>
     <%= link_to 'しんきとうろく', new_kid_path %>

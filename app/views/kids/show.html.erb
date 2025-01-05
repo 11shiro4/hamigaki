@@ -5,11 +5,6 @@
   <%= @kid.nickname %>
 </p>
 
-<%# <p> %>
-  <%# <strong>メールアドレス:</strong> %>
-  <%# <%= @kid.email %>
-<%# </p> %>
-
 <p>
   <strong>ねんれい:</strong>
   <%= @kid.age %>さい
@@ -17,3 +12,13 @@
 
 <%= link_to 'へんしゅう', edit_kid_path(@kid) %> |
 <%= link_to 'もどる', kids_path %>
+
+<h2><%= current_kid.nickname %>さんのhamigakiのきろく</h2>
+
+<%= link_to 'あたらしいきろくをついか', new_kid_brushing_log_path(current_kid) %>
+
+<ul>
+  <% current_kid.brushing_logs.each do |record| %>
+    <li><%= record.brushed_at.strftime("%Y-%m-%d %H:%M:%S") %></li>
+  <% end %>
+</ul>
