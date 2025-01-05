@@ -2,11 +2,10 @@
 
 <%= form_with(model: [current_kid, BrushingLog.new]) do |form| %>
   <div>
-    <%= form.label :brushed_at, "はみがきしたじかん" %>
-    <%= form.datetime_select :brushed_at %>
+    <%= form.hidden_field :brushed_at, value: Time.current %>
   </div>
 
   <div>
-    <%= form.submit "OK" %>
+    <%= form.submit "OK", class: "btn btn-primary" %>
   </div>
 <% end %>
