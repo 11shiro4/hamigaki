@@ -14,12 +14,11 @@ class BrushingLogsController < ApplicationController
   end
 
   def create
-    @brushing_log = BrushingLog.new(brushing_log_params)
-    if @brushing_log.save
-      redirect_to @brushing_log
-    else
-      render :new
-    end
+    @kid = Kid.find(params[:kid_id])
+    @brushing_log = @kid.brushing_logs.build(brushing_log_params)
+
+    @brushing_log.save
+    redirect_to kid_path(@kid)
   end
 
   def edit
@@ -44,6 +43,6 @@ class BrushingLogsController < ApplicationController
   private
 
   def brushing_log_params
-    params.require(:brushing_log).permit(:kid_nickname, :date, :time_of_day)
+    params.require(:brushing_log).permit(:brushed_at)
   end
 end
