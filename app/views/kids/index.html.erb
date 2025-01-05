@@ -6,12 +6,12 @@
   <% end %>
 </ul>
 
-<%= link_to 'しんきとうろく', new_kid_path %>
-
 <div>
   <% if kid_signed_in? %>
-    <%= link_to 'ログアウト', destroy_kid_session_path, method: :delete %>
+    <p><%= current_kid.nickname %>さんがログインしています</p>
+    <%= link_to 'ログアウト', destroy_kid_session_path, data: { turbo_method: :delete } %>
   <% else %>
+    <%= link_to 'しんきとうろく', new_kid_path %>
     <%= link_to 'ログイン', new_kid_session_path %>
   <% end %>
 </div>

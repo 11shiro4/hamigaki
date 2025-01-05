@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
   devise_for :kids
-
   root "kids#index"
   get "signup", to: "kids#new"
   post "signup", to: "kids#create"
-  resources :kids, only: [ :index, :show, :new, :create, :edit, :update ]
+  resources :kids
   # resources :brushing_logs
   # resources :bacteria
   # resources :kids_bacteria
