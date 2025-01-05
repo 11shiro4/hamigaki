@@ -4,9 +4,7 @@
   <% if kid_signed_in? %>
     <li><%= link_to current_kid.nickname, current_kid %></li>
   <% else %>
-    <% @kids.each do |kid| %>
-      <li><%= link_to kid.nickname, kid %></li>
-    <% end %>
+
   <% end %>
 </ul>
 
