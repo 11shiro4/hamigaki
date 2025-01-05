@@ -1,6 +1,10 @@
 class KidsController < ApplicationController
   def index
-    @kids = Kid.all
+    if kid_signed_in?
+      @kids = Kid.where.not(id: current_kid.id)
+    else
+      @kids = Kid.all
+    end
   end
 
   def show
