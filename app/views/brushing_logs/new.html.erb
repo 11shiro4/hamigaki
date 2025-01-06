@@ -1,6 +1,6 @@
 <h2>あたらしいhamigakiのきろくをついか</h2>
 
-<%= form_with(model: [current_kid, BrushingLog.new]) do |form| %>
+<%= form_with(model: [current_kid, BrushingLog.new], local: true) do |form| %>
   <div>
     <%= form.hidden_field :brushed_at, value: Time.current %>
   </div>
