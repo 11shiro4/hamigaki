@@ -3,9 +3,13 @@ Rails.application.routes.draw do
   root "kids#index"
   get "signup", to: "kids#new"
   post "signup", to: "kids#create"
+
   resources :kids do
     resources :brushing_logs, only: [ :new, :create, :index, :show, :edit, :update, :destroy ]
   end
+
+  get "signout", to: "kids#show", as: "signout"
+
   # resources :bacteria
   # resources :kids_bacteria
 

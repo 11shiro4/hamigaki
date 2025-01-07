@@ -10,7 +10,7 @@
 
 <div>
   <% if kid_signed_in? %>
-    <%= link_to 'ログアウト', destroy_kid_session_path, data: { turbo_method: :delete } %>
+    <%= link_to 'サインアウト', signout_path(signout: true) %>
   <% else %>
     <%= link_to 'しんきとうろく', new_kid_path %>
     <%= link_to 'ログイン', new_kid_session_path %>

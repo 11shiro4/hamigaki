@@ -1,16 +1,18 @@
 <h1>マイページ</h1>
 
+<% if @kid %>
 <p>
   <strong>ニックネーム:</strong>
   <%= @kid.nickname %>
 </p>
+<% end %>
 
 <p>
   <strong>ねんれい:</strong>
   <%= @kid.age %>さい
 </p>
 
-<%= link_to 'へんしゅう', edit_kid_path(@kid) %> |
+<%= link_to 'へんしゅう', edit_kid_path(@kid) %>
 <%= link_to 'もどる', kids_path %>
 
 <h2><%= current_kid.nickname %>さんのhamigakiのきろく</h2>
