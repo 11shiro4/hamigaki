@@ -39,6 +39,9 @@
           <% else %>
             <%= image_tag 'happy-face.png', alt: 'Happy Face' %>
           <% end %>
+
+          <%# 登録日時を表示 %>
+          <p>:<%= record.created_at.in_time_zone('Asia/Tokyo').strftime("%Y/%m/%d(%a) %H:%M") %></p>
         </li>
       <% end %>
     </ul>

@@ -18,7 +18,9 @@
     </section>
     <%= form_with(model: [current_kid, BrushingLog.new], local: true) do |form| %>
       <div>
-        <%= form.hidden_field :brushed_at, value: Time.current %>
+        <% current_time = Time.current.in_time_zone('Asia/Tokyo') %>
+        <p>日時: <%= current_time.strftime("%Y/%m/%d(%a)%H:%M") %></p>
+        <%= form.hidden_field :brushed_at, value: current_time %>
       </div>
       <div>
         <%= form.submit "OK", class: "btn-primary" %>
