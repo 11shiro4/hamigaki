@@ -1,18 +1,38 @@
-<h1>hamigakiへようこそ</h1>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>hamigaki - ホーム</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+  <header>
+    <h1>hamigakiへようこそ！</h1>
+  </header>
 
-<ul>
-  <% if kid_signed_in? %>
-    <li><%= link_to current_kid.nickname, current_kid %></li>
-  <% else %>
+  <main>
+    <ul>
+      <% if kid_signed_in? %>
+        <li><%= link_to current_kid.nickname, current_kid %></li>
+      <% else %>
+        <li>ようこそ！アカウントを作成してください。</li>
+      <% end %>
+    </ul>
 
-  <% end %>
-</ul>
+    <div class="actions">
+      <% if kid_signed_in? %>
+        <%= link_to 'サインアウト', signout_path(signout: true), class: "btn-primary" %>
+      <% else %>
+        <%= link_to 'しんきとうろく', new_kid_path, class: "btn-primary" %>
+        <%= link_to 'ログイン', new_kid_session_path, class: "btn-primary" %>
+      <% end %>
+    </div>
+  </main>
 
-<div>
-  <% if kid_signed_in? %>
-    <%= link_to 'サインアウト', signout_path(signout: true) %>
-  <% else %>
-    <%= link_to 'しんきとうろく', new_kid_path %>
-    <%= link_to 'ログイン', new_kid_session_path %>
-  <% end %>
-</div>
+  <footer>
+    <p>© 2025 hamigaki All Rights Reserved.</p>
+  </footer>
+</body>
+</html>

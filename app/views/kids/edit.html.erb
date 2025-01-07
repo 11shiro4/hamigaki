@@ -1,36 +1,57 @@
-<h1>プロフィールをへんしゅう</h1>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>hamigaki - プロフィール編集</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+  <header>
+    <h1>プロフィールをへんしゅう</h1>
+  </header>
 
-<%= form_with(model: @kid, local: true) do |form| %>
-  <% if @kid.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@kid.errors.count, "error") %> prohibited this kid from being saved:</h2>
-
-      <ul>
-      <% @kid.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+  <main>
+    <%= form_with(model: @kid, local: true) do |form| %>
+      <% if @kid.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@kid.errors.count, "エラー") %> が発生しました:</h2>
+          <ul>
+          <% @kid.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
       <% end %>
-      </ul>
+
+      <div class="field">
+        <%= form.label :nickname, "ニックネーム" %>
+        <%= form.text_field :nickname %>
+      </div>
+
+      <div class="field">
+        <%= form.label :email, "メールアドレス" %>
+        <%= form.email_field :email %>
+      </div>
+
+      <div class="field">
+        <%= form.label :age, "ねんれい" %>
+        <%= form.number_field :age %>
+      </div>
+
+      <div class="actions">
+        <%= form.submit "OK", class: "btn-primary" %>
+      </div>
+    <% end %>
+
+    <div class="link-back">
+      <%= link_to 'もどる', @kid, class: "btn-primary" %>
     </div>
-  <% end %>
+  </main>
 
-  <div class="field">
-    <%= form.label :nickname, "ニックネーム" %>
-    <%= form.text_field :nickname %>
-  </div>
-
-  <div class="field">
-    <%= form.label :email, "メールアドレス" %>
-    <%= form.email_field :email %>
-  </div>
-
-  <div class="field">
-    <%= form.label :age, "ねんれい" %>
-    <%= form.number_field :age %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit "OK" %>
-  </div>
-<% end %>
-
-<%= link_to 'もどる', @kid %>
+  <footer>
+    <p>© 2025 hamigaki All Rights Reserved.</p>
+  </footer>
+</body>
+</html>

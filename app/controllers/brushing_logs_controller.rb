@@ -14,7 +14,7 @@ class BrushingLogsController < ApplicationController
   end
 
   def create
-    @kid = Kid.find(params[:kid_id])  # Kidを取得
+    @kid = Kid.find(params[:kid_id])
     @brushing_log = @kid.brushing_logs.build(brushing_log_params)
     @brushing_log.kid_nickname = @kid.nickname
     @brushing_log.date = Date.today
@@ -50,6 +50,6 @@ class BrushingLogsController < ApplicationController
   private
 
   def brushing_log_params
-    params.require(:brushing_log).permit(:brushed_at, :kid_id)
+    params.require(:brushing_log).permit(:brushed_at, :kid_id, :image)
   end
 end

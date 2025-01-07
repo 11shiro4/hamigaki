@@ -1,26 +1,51 @@
-<h1>マイページ</h1>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>hamigaki - マイページ</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+  <header>
+    <h1>マイページ</h1>
+  </header>
 
-<% if @kid %>
-<p>
-  <strong>ニックネーム:</strong>
-  <%= @kid.nickname %>
-</p>
-<% end %>
+  <main>
+    <% if @kid %>
+      <p><strong>ニックネーム:</strong> <%= @kid.nickname %></p>
+    <% end %>
+    <p><strong>ねんれい:</strong> <%= @kid.age %>さい</p>
 
-<p>
-  <strong>ねんれい:</strong>
-  <%= @kid.age %>さい
-</p>
+    <div class="actions">
+      <%= link_to 'へんしゅう', edit_kid_path(@kid), class: "btn-primary" %>
+      <%= link_to 'もどる', kids_path, class: "btn-primary" %>
+    </div>
 
-<%= link_to 'へんしゅう', edit_kid_path(@kid) %>
-<%= link_to 'もどる', kids_path %>
+    <section class="title">
+      <h2><%= current_kid.nickname %>さんのhamigakiのきろく</h2>
+    </section>
 
-<h2><%= current_kid.nickname %>さんのhamigakiのきろく</h2>
+    <div>
+      <%= link_to 'あたらしいきろくをついか', new_kid_brushing_log_path(current_kid), class: "btn-primary" %>
+    </div>
 
-<%= link_to 'あたらしいきろくをついか', new_kid_brushing_log_path(current_kid) %>
+    <ul>
+      <% current_kid.brushing_logs.each do |record| %>
+        <li>
+          <% if record.image.present? %>
+            <%= image_tag(record.image.url) %>
+          <% else %>
+            <%= image_tag 'happy-face.png', alt: 'Happy Face' %>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </main>
 
-<ul>
-  <% current_kid.brushing_logs.each do |record| %>
-    <li><%= record.brushed_at.strftime("%Y-%m-%d %H:%M:%S") %></li>
-  <% end %>
-</ul>
+  <footer>
+    <p>© 2025 hamigaki All Rights Reserved.</p>
+  </footer>
+</body>
+</html>
