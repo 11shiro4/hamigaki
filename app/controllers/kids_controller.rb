@@ -8,7 +8,12 @@ class KidsController < ApplicationController
   end
 
   def show
-    @kid = Kid.find(params[:id])
+    if params[:signout] == "true"
+      reset_session
+      redirect_to root_path
+    else
+      @kid = Kid.find(params[:id])
+    end
   end
 
   def new

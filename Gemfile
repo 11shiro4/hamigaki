@@ -63,3 +63,9 @@ group :test do
 end
 
 gem "devise"
+
+gem "carrierwave", "~> 2.0"
+
+group :production do
+  gem "pg"
+end
