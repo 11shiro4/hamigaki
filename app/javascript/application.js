@@ -3,9 +3,9 @@ import "@hotwired/turbo-rails"
 //= require jquery
 //= require rails-ujs
 //= require_tree .
+
 import { Turbo } from "@hotwired/turbo-rails"
-
 import Rails from "@rails/ujs";
-Rails.start()
 
+Rails.start()
 Turbo.start()
