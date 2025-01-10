@@ -39,14 +39,15 @@
       flex-grow: 1;
       padding: 20px;
       text-align: center;
+      margin-top: -20px; /* 全体を少し上に移動 */
     }
 
     main .link-back {
-      margin-bottom: 20px; /* アイコンの位置を調整 */
+      margin-bottom: 10px; /* アイコンの位置を調整 */
     }
 
     main .field {
-      margin-bottom: 20px;
+      margin-bottom: 15px; /* 各フィールドの間隔を狭める */
     }
 
     main .actions {
@@ -77,6 +78,14 @@
 
     .link-back img:hover {
      transform: translateY(-5px); /* ホバー時に少し上に移動 */
+    }
+
+    .field input[type="text"],
+    .field input[type="email"],
+    .field input[type="number"] {
+      width: 300px; /* 幅を広げる */
+      text-align: center; /* テキストを中央揃えにする */
+      font-size: 1rem; /* 字の大きさを調整 */
     }
 
     footer {
