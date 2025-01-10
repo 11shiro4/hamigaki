@@ -66,8 +66,14 @@
     }
 
     .link-back img {
-      width: 20px; /* 幅を小さくする */
-      height: 20px; /* 高さを小さくする */
+      width: 20px; /* 幅 */
+      height: 20px; /* 高さ */
+      margin-top: -10px; /* アイコンを少し上に移動 */
+      transition: transform 0.3s; /* 動きにアニメーションを追加（オプション） */
+    }
+
+    .link-back img:hover {
+     transform: translateY(-5px); /* ホバー時にさらに上に移動（オプション） */
     }
 
     footer {
@@ -127,3 +133,4 @@
   </footer>
 </body>
 </html>
+
