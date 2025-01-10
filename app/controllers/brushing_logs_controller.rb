@@ -50,6 +50,6 @@ class BrushingLogsController < ApplicationController
   private
 
   def brushing_log_params
-    params.require(:brushing_log).permit(:brushed_at, :kid_id, :image)
+    params.require(:brushing_log).permit(:brushed_at, :kid_id, :image, :icon_type)
   end
 end
