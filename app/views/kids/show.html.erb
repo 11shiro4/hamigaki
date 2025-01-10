@@ -6,6 +6,51 @@
   <title>hamigaki - マイページ</title>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/style.css">
+
+  <style>
+    .btn-secondary img {
+      width: 20px; /* アイコンサイズを調整 */
+      height: 20px;
+    }
+
+    .actions {
+      display: flex;
+      justify-content: space-around; /* 中央に配置する場合は適宜調整 */
+      margin-bottom: 20px;
+    }
+
+    ul {
+      list-style-type: none; /* リストのポイントを非表示にする */
+      padding: 0;
+    }
+
+    li {
+      display: flex;
+      align-items: center;
+      justify-content: center; /* 中央に揃える */
+      margin-bottom: 10px;
+    }
+
+    .record-icon {
+      margin-right: 10px;
+    }
+
+    .center-content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .log-item {
+      display: flex;
+      align-items: center;
+    }
+
+    .log-item p {
+      margin: 0 10px;
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -33,7 +78,7 @@
 
     <ul>
       <% current_kid.brushing_logs.each do |record| %>
-        <li>
+        <li class="log-item">
           <% if record.icon_type.present? %>
             <%= image_tag "#{record.icon_type}.png", alt: record.icon_type.capitalize, class: 'record-icon' %>
           <% elsif record.image.present? %>
@@ -42,7 +87,9 @@
             <%= image_tag 'happy-face.png', alt: 'Happy Face' %>
           <% end %>
           <p><%= record.created_at.in_time_zone('Asia/Tokyo').strftime("%Y/%m/%d(%a) %H:%M") %></p>
-          <%= link_to '削除', [current_kid, record], method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn-secondary" %>
+          <%= link_to [current_kid, record], method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn-secondary" do %>
+            <%= image_tag 'delete.png', alt: '削除' %>
+          <% end %>
         </li>
       <% end %>
     </ul>
