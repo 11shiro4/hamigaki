@@ -50,7 +50,6 @@
     }
 
     .btn-primary {
-      background: #ff9800;
       border: none;
       border-radius: 10px;
       padding: 10px 20px;
@@ -66,7 +65,7 @@
       background: #e65100;
     }
 
-    .btn-primary img {
+    .link-back img {
       width: 20px; /* 幅を小さくする */
       height: 20px; /* 高さを小さくする */
     }
@@ -119,7 +118,7 @@
     <% end %>
 
     <div class="link-back">
-      <%= link_to image_tag('back-to-home.png', alt: 'もどる', class: 'btn-primary'), @kid %>
+      <%= link_to image_tag('arrows.png', alt: 'もどる'), @kid %>
     </div>
   </main>
 
