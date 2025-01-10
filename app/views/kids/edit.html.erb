@@ -22,7 +22,7 @@
       text-align: center;
       padding: 20px;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      flex-shrink: 0; /* ヘッダーの高さを固定 */
+      flex-shrink: 0;
     }
 
     header h1 {
@@ -66,12 +66,17 @@
       background: #e65100;
     }
 
+    .btn-primary img {
+      width: 20px; /* 幅を小さくする */
+      height: 20px; /* 高さを小さくする */
+    }
+
     footer {
       background-color: #ffc107;
       text-align: center;
       padding: 10px;
       color: white;
-      flex-shrink: 0; /* フッターの高さを固定 */
+      flex-shrink: 0;
     }
   </style>
 </head>
@@ -114,7 +119,7 @@
     <% end %>
 
     <div class="link-back">
-      <%= link_to 'もどる', @kid, class: "btn-primary" %>
+      <%= link_to image_tag('back-to-home.png', alt: 'もどる', class: 'btn-primary'), @kid %>
     </div>
   </main>
 
