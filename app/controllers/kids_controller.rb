@@ -42,6 +42,6 @@ class KidsController < ApplicationController
   private
 
   def kid_params
-    params.require(:kid).permit(:nickname, :age)
+    params.require(:kid).permit(:email, :password, :password_confirmation, :nickname, :age)
   end
 end

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>KidsApp</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbo-track': 'reload' %>
+  <%= stylesheet_link_tag 'style', media: 'all', 'data-turbo-track': 'reload' %> 
+  <%= javascript_include_tag 'application', 'data-turbo-track': 'reload' %>
+</head>
+<body>
+  <%= link_to 'New Kid', new_kid_path %>
+  <%= link_to 'Logout', destroy_kid_session_path, method: :delete %> 
+  <%= yield %>
+</body>
+</html>
