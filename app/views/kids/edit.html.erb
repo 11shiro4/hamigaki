@@ -104,7 +104,7 @@
 
   <main>
     <div class="link-back">
-      <%= link_to image_tag('arrows.png', alt: 'もどる'), @kid %>
+      <%= link_to image_tag('back-to-home.png', alt: 'もどる'), @kid %>
     </div>
     <%= form_with(model: @kid, local: true) do |form| %>
       <% if @kid.errors.any? %>
@@ -144,3 +144,4 @@
   </footer>
 </body>
 </html>
+
