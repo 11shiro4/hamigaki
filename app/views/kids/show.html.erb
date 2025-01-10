@@ -34,14 +34,14 @@
     <ul>
       <% current_kid.brushing_logs.each do |record| %>
         <li>
-          <% if record.image.present? %>
+          <% if record.icon_type.present? %>
+            <%= image_tag "#{record.icon_type}.png", alt: record.icon_type.capitalize, class: 'record-icon' %>
+          <% elsif record.image.present? %>
             <%= image_tag(record.image.url) %>
           <% else %>
             <%= image_tag 'happy-face.png', alt: 'Happy Face' %>
           <% end %>
-
-          <%# 登録日時を表示 %>
-          <p>:<%= record.created_at.in_time_zone('Asia/Tokyo').strftime("%Y/%m/%d(%a) %H:%M") %></p>
+          <p><%= record.created_at.in_time_zone('Asia/Tokyo').strftime("%Y/%m/%d(%a) %H:%M") %></p>
         </li>
       <% end %>
     </ul>
