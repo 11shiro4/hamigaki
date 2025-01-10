@@ -5,7 +5,75 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>hamigaki - プロフィール編集</title>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/style.css">
+  <style>
+    body {
+      font-family: 'Press Start 2P', sans-serif;
+      background: linear-gradient(90deg, #ffecb3, #ffe082);
+      margin: 0;
+      padding: 0;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+
+    header {
+      background-color: #ffc107;
+      text-align: center;
+      padding: 20px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      flex-shrink: 0; /* ヘッダーの高さを固定 */
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      color: #fff;
+    }
+
+    main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      flex-grow: 1;
+      padding: 20px;
+      text-align: center;
+    }
+
+    main .field {
+      margin-bottom: 20px;
+    }
+
+    main .actions, .link-back {
+      margin-top: 20px;
+    }
+
+    .btn-primary {
+      background: #ff9800;
+      border: none;
+      border-radius: 10px;
+      padding: 10px 20px;
+      font-size: 1.2rem;
+      color: white;
+      cursor: pointer;
+      text-shadow: 1px 1px 2px #555;
+      transition: background 0.3s;
+      text-decoration: none;
+    }
+
+    .btn-primary:hover {
+      background: #e65100;
+    }
+
+    footer {
+      background-color: #ffc107;
+      text-align: center;
+      padding: 10px;
+      color: white;
+      flex-shrink: 0; /* フッターの高さを固定 */
+    }
+  </style>
 </head>
 <body>
   <header>
