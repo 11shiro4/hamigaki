@@ -42,6 +42,7 @@
             <%= image_tag 'happy-face.png', alt: 'Happy Face' %>
           <% end %>
           <p><%= record.created_at.in_time_zone('Asia/Tokyo').strftime("%Y/%m/%d(%a) %H:%M") %></p>
+          <%= link_to '削除', [current_kid, record], method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn-secondary" %>
         </li>
       <% end %>
     </ul>
