@@ -1,45 +1,92 @@
-<h2>サインアップ</h2>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>サインアップ</title>
+  <link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet"> <!-- ドットゴシックフォントを読み込み -->
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: 'DotGothic16', sans-serif; /* ドットゴシックフォントを適用 */
+      text-align: center;
+      margin: 0;
+    }
+    h2 {
+      font-family: 'DotGothic16', sans-serif;
+      font-size: 2em;
+    }
+    .form-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .field {
+      margin-bottom: 15px;
+    }
+    .actions {
+      text-align: center;
+    }
+    .links {
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <h2>サインアップ</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <% if resource.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= resource.errors.count %> つ のエラーがはっせいしたよ</h2>
-      <ul>
-        <% resource.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
+    <div class="form-container">
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <% if resource.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= resource.errors.count %> つ のエラーがはっせいしたよ</h2>
+            <ul>
+              <% resource.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
         <% end %>
-      </ul>
+
+        <div class="field">
+          <%= f.label :email, "メールアドレス" %>
+          <%= f.email_field :email, autofocus: true %>
+        </div>
+
+        <div class="field">
+          <%= f.label :nickname, "ニックネーム" %> 
+          <%= f.text_field :nickname, autofocus: true %>
+        </div>
+
+        <div class="field">
+          <%= f.label :age, "ねんれい" %> 
+          <%= f.number_field :age %>
+        </div>
+
+        <div class="field">
+          <%= f.label :password, "パスワード" %>
+          <%= f.password_field :password, autocomplete: "off" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :password_confirmation, "パスワード（かくにんよう）" %>
+          <%= f.password_field :password_confirmation, autocomplete: "off" %>
+        </div>
+
+        <div class="actions">
+          <%= f.submit "しんきとうろく" %>
+        </div>
+      <% end %>
     </div>
-  <% end %>
 
-  <div class="field">
-    <%= f.label :email, "メールアドレス" %>
-    <%= f.email_field :email, autofocus: true %>
+    <div class="links">
+      <%= render "devise/shared/links" %>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :nickname, "ニックネーム" %> 
-    <%= f.text_field :nickname, autofocus: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :age, "ねんれい" %> 
-    <%= f.number_field :age %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password, "パスワード" %>
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation, "パスワード（かくにんよう）" %>
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "しんきとうろく" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</body>
+</html>
