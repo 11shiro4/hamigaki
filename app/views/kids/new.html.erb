@@ -10,26 +10,30 @@
       font-family: 'DotGothic16', sans-serif; /* フォントの変更 */
       text-align: center;
       padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh; /* 画面全体を使用 */
     }
 
     form {
-      display: inline-block;
-      text-align: center; /* フォーム内の要素を中央揃え */
+      display: flex;
+      flex-direction: column;
+      align-items: center; /* フォーム内の要素を中央揃え */
+      width: 100%;
+      max-width: 300px; /* 最大幅を設定 */
     }
 
     form div {
       margin-bottom: 15px; /* フォームの各フィールドにマージンを追加 */
+      width: 100%;
     }
 
     form label, form input {
       display: block;
       width: 100%;
-      max-width: 300px; /* 最大幅を設定 */
-      margin: 0 auto;
-    }
-
-    input {
-      text-align: center;
+      text-align: center; /* テキスト中央揃え */
     }
 
     #error_explanation {
@@ -39,6 +43,7 @@
 
     .form-footer {
       margin-top: 20px;
+      width: 100%;
     }
 
     .btn-primary {
@@ -52,6 +57,7 @@
       text-shadow: 1px 1px 2px #555;
       transition: background 0.3s;
       text-decoration: none;
+      width: 100%;
     }
 
     .btn-primary:hover {
@@ -63,7 +69,6 @@
       text-decoration: none;
       color: #007bff;
       margin-top: 10px;
-      display: inline-block;
     }
 
     .link:hover {
@@ -74,6 +79,11 @@
       width: 40px;
       height: 40px;
     }
+
+    .login-container {
+      width: 100%;
+      text-align: right;
+    }
   </style>
 </head>
 <body>
@@ -82,7 +92,7 @@
   <%= form_for(@kid, html: { class: "form-horizontal" }) do |f| %>
     <% if @kid.errors.any? %>
       <div id="error_explanation">
-        <h2><%= @kid.errors.count %> つ のエラーがはっせいしたよ</h2>
+        <h2><%= @kid.errors.count %> つ のエラーが発生したよ</h2>
         <ul>
         <% @kid.errors.full_messages.each do |message| %>
           <li><%= message %></li>
@@ -108,7 +118,7 @@
       <%= f.password_field :password, autocomplete: "new-password" %>
     </div>
     <div>
-      <%= f.label :password_confirmation, "パスワード（かくにんよう）" %>
+      <%= f.label :password_confirmation, "パスワード（確認用）" %>
       <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
     </div>
     <div class="form-footer">
@@ -116,8 +126,10 @@
     </div>
   <% end %>
 
-  <%= link_to new_kid_session_path, class: "link" do %>
-    <%= image_tag 'log-in.png', alt: 'ログイン', class: 'icon' %>
-  <% end %>
+  <div class="login-container">
+    <%= link_to new_kid_session_path, class: "link" do %>
+      <%= image_tag 'log-in.png', alt: 'ログイン', class: 'icon' %>
+    <% end %>
+  </div>
 </body>
 </html>
