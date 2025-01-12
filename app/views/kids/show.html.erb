@@ -24,6 +24,11 @@
       height: 20px;
     }
 
+    .btn-primary img {
+      width: 40px; /* アイコンサイズを調整 */
+      height: 40px;
+    }
+
     .actions {
       display: flex;
       justify-content: space-around; /* 中央に配置する場合は適宜調整 */
@@ -75,20 +80,26 @@
     <p><strong>ねんれい:</strong> <%= @kid.age %>さい</p>
 
     <div class="actions">
-      <%= link_to 'へんしゅう', edit_kid_path(@kid), class: "btn-primary" %>
-      <%= link_to 'もどる', kids_path, class: "btn-primary" %>
+      <%= link_to edit_kid_path(@kid), class: "btn-primary" do %>
+        <%= image_tag 'user-profile.png', alt: '編集' %>
+      <% end %>
+      <%= link_to kids_path, class: "btn-primary" do %>
+        <%= image_tag 'arrows.png', alt: '戻る' %>
+      <% end %>
     </div>
 
     <section class="title">
-       <% if current_kid %>
-         <h2><%= current_kid.nickname %>さんのhamigakiのきろく</h2>
-       <% else %>
-         <h2>ユーザーが見つかりません。</h2>
-       <% end %>
+      <% if current_kid %>
+        <h2><%= current_kid.nickname %>さんのhamigakiのきろく</h2>
+      <% else %>
+        <h2>ユーザーが見つかりません。</h2>
+      <% end %>
     </section>
 
     <div>
-      <%= link_to 'あたらしいきろくをついか', new_kid_brushing_log_path(current_kid), class: "btn-primary" %>
+      <%= link_to new_kid_brushing_log_path(current_kid), class: "btn-primary" do %>
+        <%= image_tag 'tooth-brush.png', alt: '新しい記録を追加' %>
+      <% end %>
     </div>
 
     <ul>
