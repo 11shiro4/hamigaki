@@ -22,11 +22,11 @@
       flex-direction: column;
       align-items: center; /* フォーム内の要素を中央揃え */
       width: 100%;
-      max-width: 300px; /* 最大幅を設定 */
+      max-width: 250px; /* 最大幅を少し狭く設定 */
     }
 
     form div {
-      margin-bottom: 15px; /* フォームの各フィールドにマージンを追加 */
+      margin-bottom: 12px; /* フォームの各フィールドに少し小さいマージンを追加 */
       width: 100%;
     }
 
@@ -36,20 +36,25 @@
       text-align: center; /* テキスト中央揃え */
     }
 
+    form input {
+      padding: 5px; /* インプットフィールドのパディングを小さく */
+      font-size: 0.9rem; /* フォントサイズを少し小さく */
+    }
+
     #error_explanation {
       color: red;
       margin-bottom: 20px;
     }
 
     .form-footer {
-      margin-top: 20px;
+      margin-top: 15px; /* フォームフッターのマージンを少し小さく */
       width: 100%;
     }
 
     .btn-primary {
       border: none;
       border-radius: 5px;
-      padding: 10px 20px;
+      padding: 8px 15px; /* ボタンのパディングを少し小さく */
       font-size: 1rem;
       color: white;
       background-color: #007bff;
@@ -83,10 +88,20 @@
     .login-container {
       width: 100%;
       text-align: right;
+      position: absolute;
+      top: 20px;
+      right: 20px;
     }
   </style>
 </head>
 <body>
+
+  <div class="login-container">
+    <%= link_to new_kid_session_path, class: "link" do %>
+      <%= image_tag 'log-in.png', alt: 'ログイン', class: 'icon' %>
+    <% end %>
+  </div>
+
   <h2>しんきとうろく</h2>
 
   <%= form_for(@kid, html: { class: "form-horizontal" }) do |f| %>
@@ -126,10 +141,5 @@
     </div>
   <% end %>
 
-  <div class="login-container">
-    <%= link_to new_kid_session_path, class: "link" do %>
-      <%= image_tag 'log-in.png', alt: 'ログイン', class: 'icon' %>
-    <% end %>
-  </div>
 </body>
 </html>
