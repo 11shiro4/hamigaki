@@ -16,6 +16,12 @@ class BrushingLogsController < ApplicationController
     end
   end
 
+  def destroy
+    @brushing_log = BrushingLog.find(params[:id])
+    @brushing_log.destroy
+    redirect_to kid_path(current_kid), notice: "\u8A18\u9332\u304C\u524A\u9664\u3055\u308C\u307E\u3057\u305F\u3002"
+  end
+
   private
 
   def brushing_log_params
