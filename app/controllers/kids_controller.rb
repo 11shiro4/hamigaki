@@ -10,12 +10,6 @@ class KidsController < ApplicationController
   end
 
   def show
-    if params[:signout] == "true"
-      reset_session
-      redirect_to root_path
-    else
-      @kid = Kid.find(params[:id])
-    end
   end
 
   def new
@@ -32,11 +26,9 @@ class KidsController < ApplicationController
   end
 
   def edit
-    @kid = Kid.find(params[:id])
   end
 
   def update
-    @kid = Kid.find(params[:id])
     if @kid.update(kid_params)
       redirect_to @kid
     else
@@ -45,7 +37,6 @@ class KidsController < ApplicationController
   end
 
   def destroy
-    @kid = Kid.find(params[:id])
     @kid.destroy
     redirect_to kids_path
   end
@@ -57,6 +48,10 @@ class KidsController < ApplicationController
   end
 
   def set_kid
-    @current_kid = Kid.find(params[:id])
+    @kid = Kid.find_by(id: params[:id])
+    if @kid.nil?
+      flash[:alert] = "その子供は見つかりません。"
+      redirect_to root_path and return
+    end
   end
 end

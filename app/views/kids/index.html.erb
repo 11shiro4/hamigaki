@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>hamigaki - ホーム</title>
   <link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet"> <!-- ドットゴシックのフォントに変更 -->
-  <link rel="stylesheet" href="/assets/style.css">
+  <%= stylesheet_link_tag 'application', media: 'all' %> <!-- Railsのアセットパイプラインを使用 -->
   <style>
     body {
       font-family: 'DotGothic16', sans-serif; /* フォントの変更 */
@@ -81,7 +81,7 @@
 
     <div class="actions">
       <% if kid_signed_in? %>
-        <%= link_to signout_path(signout: true), class: "btn-primary" do %>
+        <%= link_to destroy_kid_session_path, method: :delete, class: "btn-primary" do %>
           <%= image_tag 'logout.png', alt: 'サインアウト', width: 40, height: 40 %>
         <% end %>
       <% else %>
