@@ -87,6 +87,18 @@
       margin-left: 20px; /* 左に余白を追加 */
     }
 
+    .virus-container {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px; /* 下に余白を追加 */
+    }
+
+    .virus-img {
+      width: 40px;
+      height: 40px;
+      margin: 5px;
+    }
+
   </style>
 </head>
 <body>
@@ -122,6 +134,15 @@
         <h2>ユーザーが見つかりません。</h2>
       <% end %>
     </section>
+
+    <div class="virus-container">
+      <% if current_kid %>
+        <% daily_login_count = current_kid.daily_login_count || 0 %>
+        <% (3 - daily_login_count).times do %>
+          <%= image_tag 'virus.png', class: 'virus-img' %>
+        <% end %>
+      <% end %>
+    </div>
 
     <ul>
       <% current_kid.brushing_logs.each do |record| %>
