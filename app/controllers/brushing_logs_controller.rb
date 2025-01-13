@@ -1,18 +1,6 @@
 class BrushingLogsController < ApplicationController
   before_action :authenticate_kid!
 
-  def index
-    @brushing_logs = BrushingLog.all
-  end
-
-  def show
-    @brushing_log = BrushingLog.find(params[:kid_id])
-  end
-
-  def new
-    @brushing_log = BrushingLog.new
-  end
-
   def create
     @kid = Kid.find(params[:kid_id])
     @brushing_log = @kid.brushing_logs.build(brushing_log_params)
@@ -21,35 +9,26 @@ class BrushingLogsController < ApplicationController
     @brushing_log.time_of_day = Time.current.strftime("%H:%M")
 
     if @brushing_log.save
+      update_virus_count(@kid)
       redirect_to kid_path(@kid)
     else
       render :new
     end
   end
 
-
-  def edit
-    @brushing_log = BrushingLog.find(params[:id])
-  end
-
-  def update
-    @brushing_log = BrushingLog.find(params[:id])
-    if @brushing_log.update(brushing_log_params)
-      redirect_to @brushing_log
-    else
-      render :edit
-    end
-  end
-
-  def destroy
-    @brushing_log = BrushingLog.find(params[:id])
-    @brushing_log.destroy
-    redirect_to kid_path(current_kid)
-  end
-
   private
 
   def brushing_log_params
     params.require(:brushing_log).permit(:brushed_at, :kid_id, :image, :icon_type)
+  end
+
+  def update_virus_count(kid)
+    if kid.daily_login_count.present? && kid.daily_login_count > 0
+      kid.decrement!(:daily_login_count)
+      puts "ウイルスカウントを減少 -> 新しいカウント: #{kid.daily_login_count}"
+    else
+      kid.update(daily_login_count: 0)
+      puts "ウイルスカウントをリセットしました"
+    end
   end
 end
