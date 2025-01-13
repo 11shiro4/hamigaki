@@ -11,20 +11,21 @@
     body {
       font-family: 'DotGothic16', sans-serif;
       text-align: center;
+      margin: 0; /* bodyの余白を除去 */
     }
 
     header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: #fff;
+      background: #ffd54f; /* フッターと同じ色に変更 */
       padding: 20px;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
 
     header h1 {
       font-size: 2.5rem; 
-      color: #333;
+      color: white; /* 文字色を白に変更 */
       margin: 0;
       flex-grow: 1;
       text-align: center;
@@ -116,6 +117,16 @@
       width: 40px;
       height: 40px;
       margin: 5px;
+    }
+
+    footer {
+      background-color: #ffd54f; /* パステルイエロー */
+      text-align: center;
+      padding: 10px;
+      color: white;
+      position: absolute;
+      bottom: 0;
+      width: 100%;
     }
   </style>
 </head>
