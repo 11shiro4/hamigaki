@@ -68,7 +68,7 @@
 
     .actions {
       display: flex;
-      justify-content: space-around; /* 中央に配置する場合は適宜調整 */
+      justify-content: space-around;
       margin-bottom: 20px;
     }
 
@@ -157,18 +157,11 @@
   </header>
 
   <main>
-    <div class="actions">
-      <%= link_to new_kid_brushing_log_path(current_kid), class: "btn-primary" do %>
-        <%= image_tag 'tooth-brush.png', alt: '新しい記録を追加' %>
-        <%= image_tag 'plus.png', alt: '追加' %>
-      <% end %>
-    </div>
-
     <div class="virus-container">
       <% if current_kid %>
         <% brushing_logs_count = current_kid.brushing_logs.where('created_at >= ?', Date.today.beginning_of_day).count %>
         <% brushing_logs_count.times do %>
-          <%= image_tag 'star.png', class: 'star-img' %>
+          <%= image_tag 'star-smile.png', class: 'star-img' %>
         <% end %>
         <% (3 - brushing_logs_count).times do %>
           <%= image_tag 'virus.png', class: 'virus-img' %>
@@ -193,6 +186,13 @@
         </li>
       <% end %>
     </ul>
+
+    <div class="actions">
+      <%= link_to new_kid_brushing_log_path(current_kid), class: "btn-primary" do %>
+        <%= image_tag 'toothpaste.png', alt: '新しい記録を追加' %>
+        <%= image_tag 'plus.png', alt: '追加' %>
+      <% end %>
+    </div>
   </main>
 
   <footer>
