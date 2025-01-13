@@ -30,25 +30,30 @@
       text-align: center;
     }
 
-    .btn-secondary img, .btn-primary img, .record-icon {
-      transition: transform 0.3s ease;
-      background: none; /* 背景なしに設定 */
-    }
-
-    .btn-secondary:hover img, .btn-primary:hover img, .record-icon:hover {
-      transform: scale(1.1); /* アイコンを拡大するアニメーション */
-    }
-
-    .btn-secondary img {
-      width: 20px; /* アイコンサイズを調整 */
-      height: 20px;
-      background: none; /* 背景なしに設定 */
+    .btn-primary {
+      background: none; /* 背景をなしに設定 */
+      border: none; /* ボーダーをなしに設定 */
+      padding: 0; /* パディングをなしに設定 */
     }
 
     .btn-primary img {
+      transition: transform 0.3s ease;
       width: 40px; /* アイコンサイズを調整 */
       height: 40px;
-      background: none; /* 背景なしに設定 */
+    }
+
+    .btn-primary:hover img {
+      transform: scale(1.1); /* アイコンを拡大するアニメーション */
+    }
+
+    .btn-secondary img, .record-icon {
+      transition: transform 0.3s ease;
+      width: 20px; /* アイコンサイズを調整 */
+      height: 20px;
+    }
+
+    .btn-secondary:hover img, .record-icon:hover {
+      transform: scale(1.1); /* アイコンを拡大するアニメーション */
     }
 
     .actions {
@@ -136,7 +141,7 @@
     <div class="actions">
       <%= link_to new_kid_brushing_log_path(current_kid), class: "btn-primary" do %>
         <%= image_tag 'tooth-brush.png', alt: '新しい記録を追加' %>
-        <%= image_tag 'plus.png', alt: '追加' %> <!-- 新しいアイコンを追加 -->
+        <%= image_tag 'plus.png', alt: '追加' %>
       <% end %>
     </div>
 
