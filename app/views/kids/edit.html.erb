@@ -6,9 +6,26 @@
   <title>はみがきメモリアル - プロフィール編集</title>
   <link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet"> <!-- フォントの変更 -->
   <style>
+    /* リセットCSS */
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body,
+    ul,
+    li,
+    h1,
+    h2,
+    p,
+    div {
+      margin: 0;
+      padding: 0;
+    }
+
     body {
-      font-family: 'DotGothic16', sans-serif; /* フォントの変更 */
-      background: linear-gradient(90deg, #ffecb3, #ffe082);
+      font-family: 'DotGothic16', sans-serif; /* ドットゴシックフォントに変更 */
+      background: linear-gradient(90deg, #ffebee, #e8f5e9, #fffde7); /* ベビーピンク、ミントグリーン、パステルイエローのグラデーション */
       margin: 0;
       padding: 0;
       color: #333;
@@ -18,7 +35,7 @@
     }
 
     header {
-      background-color: #ffc107;
+      background-color: #ffd54f; /* パステルイエロー */
       text-align: center;
       padding: 20px;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -39,7 +56,8 @@
       flex-grow: 1;
       padding: 20px;
       text-align: center;
-      margin-top: -20px; /* 全体を少し上に移動 */
+      max-width: 800px;
+      margin: 0 auto;
     }
 
     main .link-back {
@@ -55,6 +73,7 @@
     }
 
     .btn-primary {
+      background: #ffb74d; /* 柔らかいオレンジ */
       border: none;
       border-radius: 10px;
       padding: 10px 20px;
@@ -67,7 +86,7 @@
     }
 
     .btn-primary:hover {
-      background: #e65100;
+      background: #ffa726;
     }
 
     .link-back img {
@@ -86,14 +105,45 @@
       width: 300px; /* 幅を広げる */
       text-align: center; /* テキストを中央揃えにする */
       font-size: 1rem; /* 字の大きさを調整 */
+      padding: 10px;
+      border: 2px solid #90caf9; /* ソフトブルー */
+      border-radius: 5px;
+      margin-bottom: 10px;
     }
 
     footer {
-      background-color: #ffc107;
+      background-color: #ffd54f; /* パステルイエロー */
       text-align: center;
       padding: 10px;
       color: white;
       flex-shrink: 0;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+
+    /* フォーム */
+    form {
+      background: #e3f2fd; /* ライトブルー */
+      border: 2px solid #90caf9; /* ソフトブルー */
+      border-radius: 10px;
+      padding: 20px;
+      margin: 20px 0;
+    }
+
+    form label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    form input,
+    form textarea {
+      width: 100%;
+      padding: 10px;
+      border: 2px solid #90caf9; /* ソフトブルー */
+      border-radius: 5px;
+      margin-bottom: 10px;
     }
   </style>
 </head>
