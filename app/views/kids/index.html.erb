@@ -58,6 +58,18 @@
       height: 40px; /* 画像の高さ */
     }
 
+    .virus-container {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px; /* 下に余白を追加 */
+    }
+
+    .virus-img, .star-img {
+      width: 40px;
+      height: 40px;
+      margin: 5px;
+    }
+
     footer {
       background-color: #ffc107;
       text-align: center;
@@ -65,6 +77,32 @@
       color: white;
     }
   </style>
+  <script>
+    // JavaScriptでアイコンを変更する処理を追加します
+    function updateIcons(brushingLogsCount) {
+      const virusContainer = document.querySelector('.virus-container');
+      virusContainer.innerHTML = ''; // コンテナをクリア
+
+      for(let i = 0; i < brushingLogsCount; i++) {
+        const starImg = document.createElement('img');
+        starImg.src = '<%= asset_path('star.png') %>';
+        starImg.classList.add('star-img');
+        virusContainer.appendChild(starImg);
+      }
+
+      for(let i = brushingLogsCount; i < 3; i++) {
+        const virusImg = document.createElement('img');
+        virusImg.src = '<%= asset_path('virus.png') %>';
+        virusImg.classList.add('virus-img');
+        virusContainer.appendChild(virusImg);
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      // ページロード時にアイコンの更新を行う
+      updateIcons(<%= current_kid.brushing_logs.where('created_at >= ?', Date.today.beginning_of_day).count %>);
+    });
+  </script>
 </head>
 <body class="<%= body_class %>">
   <header>
@@ -96,6 +134,10 @@
           <%= image_tag 'log-in.png', alt: 'ログイン', width: 40, height: 40 %>
         <% end %>
       <% end %>
+    </div>
+
+    <div class="virus-container">
+      <!-- アイコンがJavaScriptによって動的に追加されます -->
     </div>
   </main>
 
