@@ -99,6 +99,12 @@
       margin: 5px;
     }
 
+    .star-img {
+      width: 40px;
+      height: 40px;
+      margin: 5px;
+    }
+
   </style>
 </head>
 <body>
@@ -107,7 +113,7 @@
       <%= image_tag 'arrows.png', alt: '戻る' %>
     <% end %>
     <h1>マイページ</h1>
-    <%= link_to edit_kid_path(@kid), class: "btn-primary" do %>
+    <%= link_to edit_kid_path(current_kid), class: "btn-primary" do %>
       <%= image_tag 'user-profile.png', alt: '編集' %>
     <% end %>
   </header>
@@ -137,8 +143,11 @@
 
     <div class="virus-container">
       <% if current_kid %>
-        <% daily_login_count = current_kid.daily_login_count || 0 %>
-        <% (3 - daily_login_count).times do %>
+        <% brushing_logs_count = current_kid.brushing_logs.count || 0 %>
+        <% brushing_logs_count.times do %>
+          <%= image_tag 'star.png', class: 'star-img' %>
+        <% end %>
+        <% (3 - brushing_logs_count).times do %>
           <%= image_tag 'virus.png', class: 'virus-img' %>
         <% end %>
       <% end %>

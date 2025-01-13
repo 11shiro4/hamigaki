@@ -31,10 +31,8 @@ class BrushingLogsController < ApplicationController
   def update_virus_count(kid)
     if kid.daily_login_count.present? && kid.daily_login_count > 0
       kid.decrement!(:daily_login_count)
-      puts "ウイルスカウントを減少 -> 新しいカウント: #{kid.daily_login_count}"
     else
       kid.update(daily_login_count: 0)
-      puts "ウイルスカウントをリセットしました"
     end
   end
 end
