@@ -143,7 +143,7 @@
 
     <div class="virus-container">
       <% if current_kid %>
-        <% brushing_logs_count = current_kid.brushing_logs.count || 0 %>
+        <% brushing_logs_count = current_kid.brushing_logs.where('created_at >= ?', Date.today.beginning_of_day).count %>
         <% brushing_logs_count.times do %>
           <%= image_tag 'star.png', class: 'star-img' %>
         <% end %>
