@@ -1,141 +1,162 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>シャカシャカにっき - マイページ</title>
-  <link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>シャカシャカにっき - マイページ</title>
+<link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/style.css">
 
-  <style>
-    body {
-      font-family: 'DotGothic16', sans-serif;
-      text-align: center;
-      margin: 0; /* bodyの余白を除去 */
-    }
+<style>
+body {
+  font-family: 'DotGothic16', sans-serif;
+  text-align: center;
+  margin: 0; /* bodyの余白を除去 */
+}
 
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: #ffd54f; /* フッターと同じ色に変更 */
-      padding: 20px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      position: relative;
-    }
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #ffd54f; /* フッターと同じ色に変更 */
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
 
-    header h1 {
-      font-size: 2.5rem; 
-      color: white; /* 文字色を白に変更 */
-      margin: 0;
-      flex-grow: 1;
-      text-align: center;
-    }
+header h1 {
+  font-size: 2.5rem;
+  color: white; /* 文字色を白に変更 */
+  margin: 0;
+  flex-grow: 1;
+  text-align: center;
+}
 
-    .user-info-header {
-      position: absolute;
-      top: 20px;
-      right: 100px; /* 60pxから100pxに変更 */
-      text-align: right;
-      color: white;
-    }
+.user-info-header {
+  position: absolute;
+  top: 20px;
+  right: 100px; /* 60pxから100pxに変更 */
+  text-align: right;
+  color: white;
+}
 
-    .btn-primary {
-      background: none; /* 背景をなしに設定 */
-      border: none; /* ボーダーをなしに設定 */
-      padding: 0; /* パディングをなしに設定 */
-    }
+.btn-primary {
+  background: none; /* 背景をなしに設定 */
+  border: none; /* ボーダーをなしに設定 */
+  padding: 0; /* パディングをなしに設定 */
+}
 
-    .btn-primary img {
-      transition: transform 0.3s ease;
-      width: 40px; /* アイコンサイズを調整 */
-      height: 40px;
-    }
+.btn-primary img {
+  transition: transform 0.3s ease;
+  width: 40px; /* アイコンサイズを調整 */
+  height: 40px;
+}
 
-    .btn-primary:hover img {
-      transform: scale(1.1); /* アイコンを拡大するアニメーション */
-    }
+.btn-primary:hover img {
+  transform: scale(1.1); /* アイコンを拡大するアニメーション */
+}
 
-    .btn-secondary img, .record-icon {
-      transition: transform 0.3s ease;
-      width: 30px; /* アイコンサイズを大きく調整 */
-      height: 30px;
-    }
+.btn-secondary img, .record-icon {
+  transition: transform 0.3s ease;
+  width: 30px; /* アイコンサイズを大きく調整 */
+  height: 30px;
+}
 
-    .btn-secondary:hover img, .record-icon:hover {
-      transform: scale(1.1); /* アイコンを拡大するアニメーション */
-    }
+.btn-secondary:hover img, .record-icon:hover {
+  transform: scale(1.1); /* アイコンを拡大するアニメーション */
+}
 
-    .actions {
-      display: flex;
-      justify-content: space-around;
-      margin-bottom: 20px;
-    }
+.actions {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
 
-    ul {
-      list-style-type: none; /* リストのポイントを非表示にする */
-      padding: 0;
-    }
+ul {
+  list-style-type: none; /* リストのポイントを非表示にする */
+  padding: 0;
+}
 
-    li {
-      display: flex;
-      align-items: center;
-      justify-content: center; /* 中央に揃える */
-      margin-bottom: 10px;
-    }
+li {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* 中央に揃える */
+  margin-bottom: 10px;
+}
 
-    .log-item {
-      font-size: 1.5rem; /* 記録のフォントサイズを大きくする */
-    }
+.log-item {
+  font-size: 1.5rem; /* 記録のフォントサイズを大きくする */
+}
 
-    .record-icon {
-      margin-right: 10px;
-    }
+.record-icon {
+  margin-right: 10px;
+}
 
-    .center-content {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-    }
+.center-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
 
-    .log-item {
-      display: flex;
-      align-items: center;
-    }
+.log-item {
+  display: flex;
+  align-items: center;
+}
 
-    .log-item p {
-      margin: 0 10px;
-    }
+.log-item p {
+  margin: 0 10px;
+}
 
-    .virus-container {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 20px; /* 下に余白を追加 */
-    }
+.virus-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px; /* 下に余白を追加 */
+}
 
-    .virus-img {
-      width: 40px;
-      height: 40px;
-      margin: 5px;
-    }
+.virus-img {
+  width: 40px;
+  height: 40px;
+  margin: 5px;
+}
 
-    .star-img {
-      width: 40px;
-      height: 40px;
-      margin: 5px;
-    }
+.star-img {
+  width: 40px;
+  height: 40px;
+  margin: 5px;
+}
 
-    footer {
-      background-color: #ffd54f; /* パステルイエロー */
-      text-align: center;
-      padding: 10px;
-      color: white;
-      position: absolute;
-      bottom: 0;
-      width: 100%;
-    }
-  </style>
+.fixed-add-icon {
+  position: fixed;
+  bottom: 60px;
+  left: 20px;
+  z-index: 1000;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.fixed-add-icon img {
+  width: 50px; /* アイコンサイズを調整 */
+  height: 50px;
+  transition: transform 0.3s ease;
+}
+
+.fixed-add-icon:hover img {
+  transform: scale(1.1); /* アイコンを拡大するアニメーション */
+}
+
+footer {
+  background-color: #ffd54f; /* パステルイエロー */
+  text-align: center;
+  padding: 10px;
+  color: white;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+</style>
+
 </head>
 <body>
   <header>
@@ -186,14 +207,12 @@
         </li>
       <% end %>
     </ul>
-
-    <div class="actions">
-      <%= link_to new_kid_brushing_log_path(current_kid), class: "btn-primary" do %>
-        <%= image_tag 'toothpaste.png', alt: '新しい記録を追加' %>
-        <%= image_tag 'plus.png', alt: '追加' %>
-      <% end %>
-    </div>
   </main>
+
+  <%= link_to new_kid_brushing_log_path(current_kid), class: "btn-primary fixed-add-icon" do %>
+    <%= image_tag 'toothpaste.png', alt: '新しい記録を追加' %>
+    <%= image_tag 'plus.png', alt: '追加' %>
+  <% end %>
 
   <footer>
     <p>© 2025 シャカシャカにっき All Rights Reserved.</p>
