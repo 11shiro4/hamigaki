@@ -11,6 +11,10 @@
       font-family: 'DotGothic16', sans-serif; /* フォントの変更 */
       text-align: center;
     }
+    body.signed-in {
+      background: url('<%= asset_path('yawning.png') %>') no-repeat center center fixed; /* 背景画像の設定 */
+      background-size: 60% auto; /* 画像の幅をビューの幅に合わせる */
+    }
 
     main {
       display: flex;
@@ -62,7 +66,7 @@
     }
   </style>
 </head>
-<body>
+<body class="<%= body_class %>">
   <header>
     <h1>はみがきメモリアル</h1>
   </header>
