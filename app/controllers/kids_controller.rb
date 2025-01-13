@@ -1,4 +1,6 @@
 class KidsController < ApplicationController
+  before_action :set_kid, only: [ :show, :edit, :update, :destroy ]
+
   def index
     if kid_signed_in?
       @kids = Kid.where.not(id: current_kid.id)
@@ -52,5 +54,9 @@ class KidsController < ApplicationController
 
   def kid_params
     params.require(:kid).permit(:email, :password, :password_confirmation, :nickname, :age)
+  end
+
+  def set_kid
+    @current_kid = Kid.find(params[:id])
   end
 end
