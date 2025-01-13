@@ -166,7 +166,7 @@
     </div>
 
     <ul>
-      <% current_kid.brushing_logs.each do |record| %>
+      <% current_kid.brushing_logs.order(created_at: :desc).each do |record| %>
         <li class="log-item">
           <% if record.icon_type.present? %>
             <%= image_tag "#{record.icon_type}.png", alt: record.icon_type.capitalize, class: 'record-icon' %>
