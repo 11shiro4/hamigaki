@@ -4,9 +4,63 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>hamigaki - ホーム</title>
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet"> <!-- ドットゴシックのフォントに変更 -->
+  <%= stylesheet_link_tag 'application', media: 'all' %> <!-- Railsのアセットパイプラインを使用 -->
+  <style>
+    body {
+      font-family: 'DotGothic16', sans-serif; /* フォントの変更 */
+      text-align: center;
+    }
+
+    main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: calc(100vh - 120px); /* ヘッダーおよびフッターの高さを引いた値 */
+    }
+
+    ul {
+      list-style-type: none; /* リストのポイントを非表示に */
+      padding: 0;
+    }
+
+    li {
+      margin-bottom: 10px; /* リスト項目にマージンを追加 */
+    }
+
+    .actions {
+      margin-top: 20px;
+    }
+
+    .btn-primary {
+      border: none;
+      border-radius: 10px;
+      padding: 10px 20px;
+      font-size: 1.2rem;
+      color: white;
+      cursor: pointer;
+      text-shadow: 1px 1px 2px #555;
+      transition: background 0.3s;
+      text-decoration: none;
+    }
+
+    .btn-primary:hover {
+      background: #007bff;
+    }
+
+    .btn-primary img {
+      width: 40px; /* 画像の幅 */
+      height: 40px; /* 画像の高さ */
+    }
+
+    footer {
+      background-color: #ffc107;
+      text-align: center;
+      padding: 10px;
+      color: white;
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -21,16 +75,22 @@
           <i class="fas fa-home"></i>
         </li>
       <% else %>
-        <li>ようこそ！アカウントを作成してください。</li>
+        <li>ようこそ！アカウントつくろう▼ </li>
       <% end %>
     </ul>
 
     <div class="actions">
       <% if kid_signed_in? %>
-        <%= link_to 'サインアウト', signout_path(signout: true), class: "btn-primary" %>
+        <%= link_to destroy_kid_session_path, method: :delete, class: "btn-primary" do %>
+          <%= image_tag 'logout.png', alt: 'サインアウト', width: 40, height: 40 %>
+        <% end %>
       <% else %>
-        <%= link_to 'しんきとうろく', new_kid_path, class: "btn-primary" %>
-        <%= link_to 'ログイン', new_kid_session_path, class: "btn-primary" %>
+        <%= link_to new_kid_path, class: "btn-primary" do %>
+          <%= image_tag 'user.png', alt: 'しんきとうろく', width: 40, height: 40 %>
+        <% end %>
+        <%= link_to new_kid_session_path, class: "btn-primary" do %>
+          <%= image_tag 'log-in.png', alt: 'ログイン', width: 40, height: 40 %>
+        <% end %>
       <% end %>
     </div>
   </main>

@@ -1,39 +1,145 @@
-<h2>しんきとうろく</h2>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>hamigaki - しんきとうろく</title>
+  <link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet"> <!-- フォントの変更 -->
+  <style>
+    body {
+      font-family: 'DotGothic16', sans-serif; /* フォントの変更 */
+      text-align: center;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh; /* 画面全体を使用 */
+    }
 
-<%= form_for(@kid) do |f| %>
-  <% if @kid.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= @kid.errors.count %> つ のエラーがはっせいしたよ</h2>
-      <ul>
-      <% @kid.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center; /* フォーム内の要素を中央揃え */
+      width: 100%;
+      max-width: 250px; /* 最大幅を少し狭く設定 */
+    }
+
+    form div {
+      margin-bottom: 12px; /* フォームの各フィールドに少し小さいマージンを追加 */
+      width: 100%;
+    }
+
+    form label, form input {
+      display: block;
+      width: 100%;
+      text-align: center; /* テキスト中央揃え */
+    }
+
+    form input {
+      padding: 5px; /* インプットフィールドのパディングを小さく */
+      font-size: 0.9rem; /* フォントサイズを少し小さく */
+    }
+
+    #error_explanation {
+      color: red;
+      margin-bottom: 20px;
+    }
+
+    .form-footer {
+      margin-top: 15px; /* フォームフッターのマージンを少し小さく */
+      width: 100%;
+    }
+
+    .btn-primary {
+      border: none;
+      border-radius: 5px;
+      padding: 8px 15px; /* ボタンのパディングを少し小さく */
+      font-size: 1rem;
+      color: white;
+      background-color: #007bff;
+      cursor: pointer;
+      text-shadow: 1px 1px 2px #555;
+      transition: background 0.3s;
+      text-decoration: none;
+      width: 100%;
+    }
+
+    .btn-primary:hover {
+      background: #0056b3;
+    }
+
+    .link {
+      font-size: 0.9rem;
+      text-decoration: none;
+      color: #007bff;
+      margin-top: 10px;
+    }
+
+    .link:hover {
+      text-decoration: underline;
+    }
+
+    .icon {
+      width: 40px;
+      height: 40px;
+    }
+
+    .login-container {
+      width: 100%;
+      text-align: right;
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-container">
+    <%= link_to new_kid_session_path, class: "link" do %>
+      <%= image_tag 'log-in.png', alt: 'ログイン', class: 'icon' %>
+    <% end %>
+  </div>
+
+  <h2>しんきとうろく</h2>
+
+  <%= form_for(@kid, html: { class: "form-horizontal" }) do |f| %>
+    <% if @kid.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= @kid.errors.count %> つ のエラーが発生したよ</h2>
+        <ul>
+        <% @kid.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div>
+      <%= f.label :email, "メールアドレス" %>
+      <%= f.email_field :email, autofocus: true %>
+    </div>
+    <div>
+      <%= f.label :nickname, "ニックネーム" %>
+      <%= f.text_field :nickname %>
+    </div>
+    <div>
+      <%= f.label :age, "ねんれい" %>
+      <%= f.number_field :age %>
+    </div>
+    <div>
+      <%= f.label :password, "パスワード" %>
+      <%= f.password_field :password, autocomplete: "new-password" %>
+    </div>
+    <div>
+      <%= f.label :password_confirmation, "パスワード（確認用）" %>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    </div>
+    <div class="form-footer">
+      <%= f.submit "OK", class: "btn-primary" %>
     </div>
   <% end %>
 
-  <div>
-    <%= f.label :email, "メールアドレス" %>
-    <%= f.email_field :email, autofocus: true %>
-  </div>
-  <div>
-    <%= f.label :nickname, "ニックネーム" %>
-    <%= f.text_field :nickname %>
-  </div>
-  <div>
-    <%= f.label :age, "ねんれい" %>
-    <%= f.number_field :age %>
-  </div>
-  <div>
-    <%= f.label :password, "パスワード" %>
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-  <div>
-    <%= f.label :password_confirmation, "パスワード（かくにんよう）" %>
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-  <div>
-    <%= f.submit "OK" %>
-  </div>
-<% end %>
-<%= link_to "ログイン", new_kid_session_path %>
+</body>
+</html>

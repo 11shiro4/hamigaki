@@ -4,8 +4,98 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>hamigaki - プロフィール編集</title>
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet"> <!-- フォントの変更 -->
+  <style>
+    body {
+      font-family: 'DotGothic16', sans-serif; /* フォントの変更 */
+      background: linear-gradient(90deg, #ffecb3, #ffe082);
+      margin: 0;
+      padding: 0;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+
+    header {
+      background-color: #ffc107;
+      text-align: center;
+      padding: 20px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      flex-shrink: 0;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      color: #fff;
+    }
+
+    main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      flex-grow: 1;
+      padding: 20px;
+      text-align: center;
+      margin-top: -20px; /* 全体を少し上に移動 */
+    }
+
+    main .link-back {
+      margin-bottom: 10px; /* アイコンの位置を調整 */
+    }
+
+    main .field {
+      margin-bottom: 15px; /* 各フィールドの間隔を狭める */
+    }
+
+    main .actions {
+      margin-top: 20px;
+    }
+
+    .btn-primary {
+      border: none;
+      border-radius: 10px;
+      padding: 10px 20px;
+      font-size: 1.2rem;
+      color: white;
+      cursor: pointer;
+      text-shadow: 1px 1px 2px #555;
+      transition: background 0.3s;
+      text-decoration: none;
+    }
+
+    .btn-primary:hover {
+      background: #e65100;
+    }
+
+    .link-back img {
+      width: 40px; /* 幅 */
+      height: 40px; /* 高さ */
+      transition: transform 0.3s; /* 動きにアニメーションを追加（オプション） */
+    }
+
+    .link-back img:hover {
+     transform: translateY(-5px); /* ホバー時に少し上に移動 */
+    }
+
+    .field input[type="text"],
+    .field input[type="email"],
+    .field input[type="number"] {
+      width: 300px; /* 幅を広げる */
+      text-align: center; /* テキストを中央揃えにする */
+      font-size: 1rem; /* 字の大きさを調整 */
+    }
+
+    footer {
+      background-color: #ffc107;
+      text-align: center;
+      padding: 10px;
+      color: white;
+      flex-shrink: 0;
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -13,6 +103,9 @@
   </header>
 
   <main>
+    <div class="link-back">
+      <%= link_to image_tag('back-to-home.png', alt: 'もどる'), @kid %>
+    </div>
     <%= form_with(model: @kid, local: true) do |form| %>
       <% if @kid.errors.any? %>
         <div id="error_explanation">
@@ -44,10 +137,6 @@
         <%= form.submit "OK", class: "btn-primary" %>
       </div>
     <% end %>
-
-    <div class="link-back">
-      <%= link_to 'もどる', @kid, class: "btn-primary" %>
-    </div>
   </main>
 
   <footer>

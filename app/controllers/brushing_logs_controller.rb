@@ -44,12 +44,12 @@ class BrushingLogsController < ApplicationController
   def destroy
     @brushing_log = BrushingLog.find(params[:id])
     @brushing_log.destroy
-    redirect_to brushing_logs_path
+    redirect_to kid_path(current_kid)
   end
 
   private
 
   def brushing_log_params
-    params.require(:brushing_log).permit(:brushed_at, :kid_id, :image)
+    params.require(:brushing_log).permit(:brushed_at, :kid_id, :image, :icon_type)
   end
 end

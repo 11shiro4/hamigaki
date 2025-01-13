@@ -4,8 +4,69 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>hamigaki</title>
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet"> <!-- フォントの変更 -->
   <link rel="stylesheet" href="/assets/style.css">
+
+  <style>
+    body {
+      font-family: 'DotGothic16', sans-serif; /* ドットゴシックに変更 */
+      text-align: center;
+    }
+
+    .icon-container {
+      display: flex;
+      justify-content: center; /* 中央揃え */
+      gap: 20px; /* アイコンの間隔 */
+      flex-wrap: wrap; /* 横並び */
+    }
+
+    .icon-option {
+      display: flex;
+      flex-direction: column; /* 垂直に揃える */
+      align-items: center; /* 中央揃え */
+      justify-content: center; /* 中央揃え */
+      padding: 10px;
+      width: 150px; /* 枠の幅を大きく */
+      height: 150px; /* 枠の高さを大きく */
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      cursor: pointer;
+      text-align: center;
+      white-space: nowrap; /* テキストの折り返しを無効にする */
+    }
+
+    .icon-option input {
+      display: none;
+    }
+
+    .icon-preview {
+      width: 40px; /* アイコンのサイズを調整 */
+      height: 40px;
+      margin-bottom: 5px;
+    }
+
+    .icon-label {
+      font-size: 1.2em; /* ボタンのラベルのサイズを大きく調整 */
+      margin-top: 8px; 
+    }
+
+    .btn-primary {
+      font-size: 1.2em; /* "OK"ボタンのサイズも調整 */
+      padding: 10px 20px;
+      cursor: pointer;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      margin-top: 20px; /* 上部に余白を追加 */
+    }
+
+    .form-label {
+      text-align: center; /* ラベルを中央揃え */
+      display: block; /* ブロック要素にする */
+      margin-bottom: 10px; /* 下に少し余白を追加 */
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -19,9 +80,33 @@
     <%= form_with(model: [current_kid, BrushingLog.new], local: true) do |form| %>
       <div>
         <% current_time = Time.current.in_time_zone('Asia/Tokyo') %>
-        <p>日時: <%= current_time.strftime("%Y/%m/%d(%a)%H:%M") %></p>
+        <p>じかん: <%= current_time.strftime("%Y/%m/%d(%a)%H:%M") %></p>
         <%= form.hidden_field :brushed_at, value: current_time %>
       </div>
+
+      <div>
+        <%= form.label :icon_type, "じょうずにできた？", class: "form-label" %>
+        <div class="icon-container">
+          <label class="icon-option">
+            <%= form.radio_button :icon_type, :perfect %>
+            <%= image_tag "perfect.png", alt: "パーフェクト", class: 'icon-preview' %>
+            <span class="icon-label">パーフェクト</span>
+          </label>
+
+          <label class="icon-option">
+            <%= form.radio_button :icon_type, :good %>
+            <%= image_tag "good.png", alt: "よくできた", class: 'icon-preview' %>
+            <span class="icon-label">よくできた</span>
+          </label>
+
+          <label class="icon-option">
+            <%= form.radio_button :icon_type, :done %>
+            <%= image_tag "done.png", alt: "できた", class: 'icon-preview' %>
+            <span class="icon-label">できた</span>
+          </label>
+        </div>
+      </div>
+
       <div>
         <%= form.submit "OK", class: "btn-primary" %>
       </div>
