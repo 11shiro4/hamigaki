@@ -8,6 +8,7 @@
   <style>
     body {
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
       height: 100vh;
@@ -33,6 +34,15 @@
     }
     .links {
       text-align: center;
+    }
+    footer {
+      background-color: #ffd54f; /* パステルイエロー */
+      text-align: center;
+      padding: 10px;
+      color: white;
+      position: absolute;
+      bottom: 0;
+      width: 100%;
     }
   </style>
 </head>
@@ -60,5 +70,9 @@
       <%= render "devise/shared/links" %>
     </div>
   </div>
+
+  <footer>
+    <p>© 2025 はみがきメモリアル All Rights Reserved.</p>
+  </footer>
 </body>
 </html>
