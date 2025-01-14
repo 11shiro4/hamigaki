@@ -29,7 +29,7 @@
     }
     .field {
       margin-bottom: 15px;
-      text-align: left; /* ラベルとフィールドを左揃えに */
+      text-align: center; /* ラベルとフィールドを中央揃えに */
     }
     .field-left,
     .field-right {
@@ -50,9 +50,11 @@
     }
     input[type="email"],
     input[type="text"],
-    input[type="password"] {
+    input[type="password"],
+    input[type="number"] {
       width: 300px; /* 横長のフォームにする */
       padding: 10px;
+      text-align: center; /* 入力フィールドの文字を中央揃えに */
     }
     footer {
       background-color: #ffd54f; /* パステルイエロー */
@@ -83,15 +85,19 @@
         <div class="fields-row">
           <div class="field-left">
             <div class="field">
-              <%= f.label :email, "メールアドレス" %>
-              <%= f.email_field :email, autofocus: true %>
-            </div>
-            <div class="field">
               <%= f.label :nickname, "ニックネーム" %> 
               <%= f.text_field :nickname, autofocus: true %>
             </div>
+            <div class="field">
+              <%= f.label :age, "ねんれい" %>
+              <%= f.number_field :age, min: 0 %>
+            </div>
           </div>
           <div class="field-right">
+            <div class="field">
+              <%= f.label :email, "メールアドレス" %>
+              <%= f.email_field :email, autofocus: true %>
+            </div>
             <div class="field">
               <%= f.label :password, "パスワード" %>
               <%= f.password_field :password, autocomplete: "off" %>
