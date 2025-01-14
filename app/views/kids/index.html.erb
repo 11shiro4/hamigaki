@@ -38,27 +38,26 @@
 
     .actions {
       margin-top: 20px;
+      display: flex;
+      gap: 20px; /* ボタン同士の間隔を設定 */
     }
 
-    .btn-primary {
-      border: none;
-      border-radius: 10px;
-      padding: 10px 20px;
-      font-size: 1.2rem;
-      color: white;
-      cursor: pointer;
-      text-shadow: 1px 1px 2px #555;
-      transition: background 0.3s;
+    .btn-icon {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       text-decoration: none;
+      color: #333;  /* テキスト色 */
+      transition: transform 0.3s ease;
     }
 
-    .btn-primary:hover {
-      background: #007bff;
+    .btn-icon:hover {
+      transform: scale(1.2); /* ホバー時に少し大きく */
     }
 
-    .btn-primary img {
-      width: 40px;
-      height: 40px;
+    .btn-icon img {
+      width: 60px; /* アイコンサイズ */
+      height: 60px;
     }
 
     .virus-container {
@@ -189,11 +188,13 @@
 
     <div class="actions">
       <% unless kid_signed_in? %>
-        <%= link_to new_kid_registration_path, class: "btn-primary" do %>
-          <%= image_tag 'user.png', alt: 'しんきとうろく', width: 40, height: 40 %>
+        <%= link_to new_kid_registration_path, class: "btn-icon" do %>
+          <%= image_tag 'user.png', alt: 'しんきとうろく' %>
+          <span>しんきとうろく</span>
         <% end %>
-        <%= link_to new_kid_session_path, class: "btn-primary" do %>
-          <%= image_tag 'log-in.png', alt: 'ログイン', width: 40, height: 40 %>
+        <%= link_to new_kid_session_path, class: "btn-icon" do %>
+          <%= image_tag 'log-in.png', alt: 'ログイン' %>
+          <span>ログイン</span>
         <% end %>
       <% end %>
     </div>
