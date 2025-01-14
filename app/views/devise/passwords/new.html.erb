@@ -15,6 +15,7 @@
       text-align: center;
       margin: 0;
       padding-top: 50px; /* 追加: 上に余白を追加 */
+      overflow: hidden; /* エレメントのはみ出しを隠す */
     }
 
     header {
@@ -95,6 +96,20 @@
       bottom: 0;
       width: 100%;
     }
+
+    /* dentist-day.png を右から左へ歩かせるアニメーション */
+    @keyframes walk {
+      0% { transform: translateX(100vw); }
+      100% { transform: translateX(-100px); }
+    }
+
+    .walking-image {
+      position: absolute;
+      bottom: 150px; /* 画像の位置を少し上に */
+      width: 50px;
+      height: 50px;
+      animation: walk 10s linear infinite;
+    }
   </style>
 </head>
 <body>
@@ -118,6 +133,8 @@
       </div>
     <% end %>
   </div>
+
+  <img src="<%= asset_path('dentist-day.png') %>" alt="歩く画像" class="walking-image">
 
   <footer>
     <p>© 2025 シャカシャカにっき All Rights Reserved.</p>
