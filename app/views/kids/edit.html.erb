@@ -83,26 +83,27 @@
       text-align: center;
       max-width: 800px;
       margin: 0 auto;
-      margin-top: 150px; /* フォームの位置を少し下げる */
+      margin-top: 120px; /* フォームの位置を上に調整 */
     }
 
     main .field {
       margin-bottom: 15px; /* 各フィールドの間隔を狭める */
-      display: flex;
-      justify-content: center;
+      display: flex; /* 各フィールドを横並びにする */
+      align-items: center; /* フィールド内の要素を中央揃えにする */
+      width: 100%; /* 幅を100%にする */
+      justify-content: center; /* 中央揃えにする */
     }
 
     main .field label {
-      display: block;
-      width: 100%;
-      text-align: left; /* ラベルを左揃えにする */
+      width: 150px; /* ラベルの幅を固定 */
+      text-align: center; /* ラベルを中央揃えにする */
+      margin-right: 10px; /* ラベルと入力フィールドの間隔を設定 */
     }
 
     main .field input {
       display: block;
-      width: 100%;
-      max-width: 300px; /* フィールドの最大幅を設定 */
-      text-align: left; /* テキストを左揃えにする */
+      width: calc(100% - 160px); /* ラベルの幅を引いた残りの幅を設定 */
+      text-align: center; /* テキストを中央揃えにする */
       font-size: 1rem; /* 字の大きさを調整 */
       padding: 10px;
       border: 2px solid #90caf9; /* ソフトブルー */
@@ -176,7 +177,7 @@
     <div class="link-back">
       <%= link_to image_tag('arrows.png', alt: 'もどる'), @kid %>
     </div>
-      <h1>プロフィールをへんしゅう</h1>
+      <h1>プロフィールへんしゅう</h1>
   </header>
 
   <main>
