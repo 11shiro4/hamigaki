@@ -1,93 +1,171 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>hamigaki - マイページ</title>
-  <link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>シャカシャカにっき - マイページ</title>
+<link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/style.css">
 
-  <style>
-    body {
-      font-family: 'DotGothic16', sans-serif;
-      text-align: center;
-    }
+<style>
+body {
+  font-family: 'DotGothic16', sans-serif;
+  text-align: center;
+  margin: 0;
+}
 
-    header {
-      margin-bottom: 20px; /* 下に余白を追加 */
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      width: 100%;
-      padding: 0 20px;
-    }
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #ffd54f;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
 
-    .btn-secondary img, .btn-primary img, .record-icon {
-      transition: transform 0.3s ease;
-      background: none; /* 背景なしに設定 */
-    }
+header h1 {
+  font-size: 2.5rem;
+  color: white;
+  margin: 0;
+  flex-grow: 1;
+  text-align: center;
+}
 
-    .btn-secondary:hover img, .btn-primary:hover img, .record-icon:hover {
-      transform: scale(1.1); /* アイコンを拡大するアニメーション */
-    }
+.user-info-header {
+  position: absolute;
+  top: 20px;
+  right: 100px;
+  text-align: right;
+  color: white;
+}
 
-    .btn-secondary img {
-      width: 20px; /* アイコンサイズを調整 */
-      height: 20px;
-      background: none; /* 背景なしに設定 */
-    }
+.btn-primary {
+  background: none;
+  border: none;
+  padding: 0;
+}
 
-    .btn-primary img {
-      width: 40px; /* アイコンサイズを調整 */
-      height: 40px;
-      background: none; /* 背景なしに設定 */
-    }
+.btn-primary img {
+  transition: transform 0.3s ease;
+  width: 40px;
+  height: 40px;
+}
 
-    .actions {
-      display: flex;
-      justify-content: space-around; /* 中央に配置する場合は適宜調整 */
-      margin-bottom: 20px;
-    }
+.btn-primary:hover img {
+  transform: scale(1.1); /* アイコンを拡大するアニメーション */
+}
 
-    ul {
-      list-style-type: none; /* リストのポイントを非表示にする */
-      padding: 0;
-    }
+.btn-secondary img, .record-icon {
+  transition: transform 0.3s ease;
+  width: 30px; /* アイコンサイズを大きく調整 */
+  height: 30px;
+}
 
-    li {
-      display: flex;
-      align-items: center;
-      justify-content: center; /* 中央に揃える */
-      margin-bottom: 10px;
-    }
+.btn-secondary:hover img, .record-icon:hover {
+  transform: scale(1.1); /* アイコンを拡大するアニメーション */
+}
 
-    .record-icon {
-      margin-right: 10px;
-    }
+.actions {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
 
-    .center-content {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-    }
+ul {
+  list-style-type: none; /* リストのポイントを非表示にする */
+  padding: 0;
+}
 
-    .log-item {
-      display: flex;
-      align-items: center;
-    }
+li {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* 中央に揃える */
+  margin-bottom: 10px;
+}
 
-    .log-item p {
-      margin: 0 10px;
-    }
+.log-item {
+  font-size: 1.5rem;
+}
 
-    /* ニックネームと年齢を左寄せにするスタイル */
-    .user-info {
-      text-align: left;
-      margin-left: 20px; /* 左に余白を追加 */
-    }
+.record-icon {
+  margin-right: 10px;
+}
 
-  </style>
+.center-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.log-item {
+  display: flex;
+  align-items: center;
+}
+
+.log-item p {
+  margin: 0 10px;
+}
+
+.virus-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px; /* 下に余白を追加 */
+}
+
+.virus-img {
+  width: 40px;
+  height: 40px;
+  margin: 5px;
+}
+
+.star-img {
+  width: 40px;
+  height: 40px;
+  margin: 5px;
+}
+
+.fixed-add-icon {
+  position: fixed;
+  bottom: 60px;
+  left: 20px;
+  z-index: 1000;
+  background: none;
+  border: none;
+  padding: 0;
+  display: flex;          
+  align-items: center;    
+  justify-content: center;
+  flex-direction: column;
+}
+
+.fixed-add-icon img {
+  width: 50px;
+  height: 50px;
+  transition: transform 0.3s ease;
+}
+
+.fixed-add-icon:hover img {
+  transform: scale(1.1); /* アイコンを拡大するアニメーション */
+}
+
+.label {
+  font-size: 1.2rem; 
+  color: #777; 
+}
+
+footer {
+  background-color: #ffd54f; /* パステルイエロー */
+  text-align: center;
+  padding: 10px;
+  color: white;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+</style>
+
 </head>
 <body>
   <header>
@@ -95,36 +173,34 @@
       <%= image_tag 'arrows.png', alt: '戻る' %>
     <% end %>
     <h1>マイページ</h1>
-    <%= link_to edit_kid_path(@kid), class: "btn-primary" do %>
-      <%= image_tag 'user-profile.png', alt: '編集' %>
-    <% end %>
-  </header>
 
-  <main>
-    <div class="user-info">
+    <div class="user-info-header">
       <% if @kid %>
         <p><strong>ニックネーム:</strong> <%= @kid.nickname %></p>
       <% end %>
       <p><strong>ねんれい:</strong> <%= @kid.age %>さい</p>
     </div>
 
-    <div class="actions">
-      <%= link_to new_kid_brushing_log_path(current_kid), class: "btn-primary" do %>
-        <%= image_tag 'tooth-brush.png', alt: '新しい記録を追加' %>
-        <%= image_tag 'plus.png', alt: '追加' %> <!-- 新しいアイコンを追加 -->
+    <%= link_to edit_kid_path(current_kid), class: "btn-primary" do %>
+      <%= image_tag 'user-profile.png', alt: '編集' %>
+    <% end %>
+  </header>
+
+  <main>
+    <div class="virus-container">
+      <% if current_kid %>
+        <% brushing_logs_count = current_kid.brushing_logs.where('created_at >= ?', Date.today.beginning_of_day).count %>
+        <% brushing_logs_count.times do %>
+          <%= image_tag 'star-smile.png', class: 'star-img' %>
+        <% end %>
+        <% (3 - brushing_logs_count).times do %>
+          <%= image_tag 'virus.png', class: 'virus-img' %>
+        <% end %>
       <% end %>
     </div>
 
-    <section class="title">
-      <% if current_kid %>
-        <h2><%= current_kid.nickname %>さんのhamigakiのきろく</h2>
-      <% else %>
-        <h2>ユーザーが見つかりません。</h2>
-      <% end %>
-    </section>
-
     <ul>
-      <% current_kid.brushing_logs.each do |record| %>
+      <% current_kid.brushing_logs.order(created_at: :desc).each do |record| %>
         <li class="log-item">
           <% if record.icon_type.present? %>
             <%= image_tag "#{record.icon_type}.png", alt: record.icon_type.capitalize, class: 'record-icon' %>
@@ -142,8 +218,13 @@
     </ul>
   </main>
 
+  <%= link_to new_kid_brushing_log_path(current_kid), class: "btn-primary fixed-add-icon" do %>
+    <%= image_tag 'toothpaste.png', alt: '新しい記録を追加' %>
+    <span class="label">きろくをのこす</span>
+  <% end %>
+
   <footer>
-    <p>© 2025 hamigaki All Rights Reserved.</p>
+    <p>© 2025 シャカシャカにっき All Rights Reserved.</p>
   </footer>
 </body>
 </html>

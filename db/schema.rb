@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_01_10_064358) do
+ActiveRecord::Schema[8.0].define(version: 2025_01_13_025514) do
   create_table "bacteria", charset: "utf8mb3", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
@@ -41,6 +41,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_10_064358) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "login_at"
+    t.integer "daily_login_count"
     t.index ["email"], name: "index_kids_on_email", unique: true
     t.index ["reset_password_token"], name: "index_kids_on_reset_password_token", unique: true
   end

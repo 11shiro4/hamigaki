@@ -3,13 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>hamigaki - ホーム</title>
-  <link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet"> <!-- ドットゴシックのフォントに変更 -->
-  <%= stylesheet_link_tag 'application', media: 'all' %> <!-- Railsのアセットパイプラインを使用 -->
+  <title>シャカシャカにっき - ホーム</title>
+  <link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
+  <%= stylesheet_link_tag 'application', media: 'all' %>
   <style>
     body {
-      font-family: 'DotGothic16', sans-serif; /* フォントの変更 */
+      font-family: 'DotGothic16', sans-serif;
       text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    body.signed-in {
+      background: url('<%= asset_path('yawning.png') %>') no-repeat center center fixed;
+      background-size: 80% auto;
     }
 
     main {
@@ -17,41 +23,92 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      min-height: calc(100vh - 120px); /* ヘッダーおよびフッターの高さを引いた値 */
+      min-height: calc(100vh - 120px);
+      position: relative;
     }
 
     ul {
-      list-style-type: none; /* リストのポイントを非表示に */
+      list-style-type: none;
       padding: 0;
     }
 
     li {
-      margin-bottom: 10px; /* リスト項目にマージンを追加 */
+      margin-bottom: 10px;
+    }
+
+    .username-link {
+      color: #ff5722; /* 目立つ色 */
+      text-decoration: none;
+      font-weight: bold;
+      position: relative;
+    }
+
+    .username-link::after {
+      content: ' (ここをタップしてはじめよう)';
+      font-size: 0.8em;
+      color: #777;
+    }
+
+    .username-link:hover {
+      text-decoration: underline;
+      color: #e64a19; /* ホバー時の色 */
     }
 
     .actions {
       margin-top: 20px;
+      display: flex;
+      gap: 20px; /* ボタン同士の間隔を設定 */
     }
 
-    .btn-primary {
-      border: none;
-      border-radius: 10px;
-      padding: 10px 20px;
-      font-size: 1.2rem;
-      color: white;
-      cursor: pointer;
-      text-shadow: 1px 1px 2px #555;
-      transition: background 0.3s;
+    .btn-icon {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       text-decoration: none;
+      color: #333;  /* テキスト色 */
+      transition: transform 0.3s ease;
     }
 
-    .btn-primary:hover {
-      background: #007bff;
+    .btn-icon:hover {
+      transform: scale(1.2); /* ホバー時に少し大きく */
     }
 
-    .btn-primary img {
-      width: 40px; /* 画像の幅 */
-      height: 40px; /* 画像の高さ */
+    .btn-icon img {
+      width: 60px; /* アイコンサイズ */
+      height: 60px;
+    }
+
+    .virus-container {
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      height: 200px;
+      width: 100%;
+      position: relative;
+      margin-bottom: 20px;
+    }
+
+    .floating {
+      animation: floating 3s ease-in-out infinite;
+    }
+
+    @keyframes floating {
+      0% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-20px);
+      }
+      100% {
+        transform: translateY(0);
+      }
+    }
+
+    .virus-img, .star-img {
+      width: 40px;
+      height: 40px;
+      margin: 5px;
+      position: absolute;
     }
 
     footer {
@@ -60,43 +117,129 @@
       padding: 10px;
       color: white;
     }
+
+    header {
+      background-color: #ffc107; /* パステルイエロー */
+      text-align: center;
+      padding: 20px; /* サイズを他のページと揃える */
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2rem; /* 他のページと揃える */
+      color: #fff;
+    }
+
+    .logout-button {
+      position: absolute;
+      right: 20px;
+      top: 20px;
+      transition: transform 0.3s ease;
+    }
+
+    .logout-button:hover {
+      transform: scale(1.2);
+    }
   </style>
+  <script>
+    function randomPositionWithinBounds(minLeft, maxLeft, minTop, maxTop) {
+      return {
+        left: Math.floor(Math.random() * (maxLeft - minLeft + 1) + minLeft) + 'px',
+        top: Math.floor(Math.random() * (maxTop - minTop + 1) + minTop) + 'px'
+      };
+    }
+
+    function updateIcons(brushingLogsCount) {
+      const virusContainer = document.querySelector('.virus-container');
+      virusContainer.innerHTML = '';
+      const containerWidth = virusContainer.clientWidth;
+      const containerHeight = virusContainer.clientHeight;
+
+      const minLeft = containerWidth / 2 - 60;
+      const maxLeft = containerWidth / 2 + 60;
+      const minTop = containerHeight - 80;
+      const maxTop = containerHeight - 40;
+
+      for(let i = 0; i < brushingLogsCount; i++) {
+        const starImg = document.createElement('img');
+        starImg.src = '<%= asset_path('star-smile.png') %>';
+        starImg.classList.add('star-img', 'floating'); // floating クラスを追加
+        const position = randomPositionWithinBounds(minLeft, maxLeft, minTop, maxTop);
+        starImg.style.left = position.left;
+        starImg.style.top = position.top;
+        virusContainer.appendChild(starImg);
+      }
+
+      for(let i = brushingLogsCount; i < 3; i++) {
+        const virusImg = document.createElement('img');
+        virusImg.src = '<%= asset_path('virus.png') %>';
+        virusImg.classList.add('virus-img', 'floating'); // floating クラスを追加
+        const position = randomPositionWithinBounds(minLeft, maxLeft, minTop, maxTop);
+        virusImg.style.left = position.left;
+        virusImg.style.top = position.top;
+        virusContainer.appendChild(virusImg);
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      <% if current_kid %>
+        updateIcons(<%= current_kid.brushing_logs.where('created_at >= ?', Date.today.beginning_of_day).count %>);
+      <% else %>
+        updateIcons(0);
+      <% end %>
+    });
+  </script>
 </head>
-<body>
+<body class="<%= body_class %>">
   <header>
-    <h1>hamigakiへようこそ！</h1>
+    <h1>シャカシャカにっき</h1>
+    <% if kid_signed_in? %>
+      <%= link_to destroy_kid_session_path, method: :delete, class: "logout-button" do %>
+        <%= image_tag 'logout.png', alt: 'サインアウト', width: 40, height: 40 %>
+      <% end %>
+    <% end %>
   </header>
 
   <main>
     <ul>
       <% if kid_signed_in? %>
         <li>
-          <%= link_to current_kid.nickname, current_kid %>
+          <%= link_to current_kid.nickname, current_kid, class: "username-link" %>
           <i class="fas fa-home"></i>
         </li>
       <% else %>
-        <li>ようこそ！アカウントつくろう▼ </li>
+        <li>おうちのひとにとうろくしてもらおう▼</li>
       <% end %>
     </ul>
 
     <div class="actions">
-      <% if kid_signed_in? %>
-        <%= link_to destroy_kid_session_path, method: :delete, class: "btn-primary" do %>
-          <%= image_tag 'logout.png', alt: 'サインアウト', width: 40, height: 40 %>
+      <% unless kid_signed_in? %>
+        <%= link_to new_kid_registration_path, class: "btn-icon" do %>
+          <%= image_tag 'user.png', alt: 'しんきとうろく' %>
+          <span>しんきとうろく</span>
         <% end %>
-      <% else %>
-        <%= link_to new_kid_path, class: "btn-primary" do %>
-          <%= image_tag 'user.png', alt: 'しんきとうろく', width: 40, height: 40 %>
-        <% end %>
-        <%= link_to new_kid_session_path, class: "btn-primary" do %>
-          <%= image_tag 'log-in.png', alt: 'ログイン', width: 40, height: 40 %>
+        <%= link_to new_kid_session_path, class: "btn-icon" do %>
+          <%= image_tag 'log-in.png', alt: 'ログイン' %>
+          <span>ログイン</span>
         <% end %>
       <% end %>
+    </div>
+
+    <div class="virus-container">
+      <!-- アイコンがJavaScriptによって動的に追加されます -->
     </div>
   </main>
 
   <footer>
-    <p>© 2025 hamigaki All Rights Reserved.</p>
+    <p>© 2025 シャカシャカにっき All Rights Reserved.</p>
   </footer>
 </body>
 </html>

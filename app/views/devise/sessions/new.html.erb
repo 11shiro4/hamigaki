@@ -8,57 +8,138 @@
   <style>
     body {
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
       height: 100vh;
       font-family: 'DotGothic16', sans-serif; /* ドットゴシックフォントを適用 */
       text-align: center;
       margin: 0;
+      padding-top: 50px; /* 追加: 上に余白を追加 */
+      overflow: hidden; /* エレメントのはみ出しを隠す */
     }
-    h2 {
-      font-family: 'DotGothic16', sans-serif;
-      font-size: 2em;
+
+    header {
+      background-color: #ffc107; /* パステルイエロー */
+      text-align: center;
+      padding: 20px;
+      width: 100%;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      position: fixed; /* 追加: ヘッダーをページの上部に固定 */
+      top: 0;
+      left: 0;
+      right: 0;
     }
+
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+      color: #fff;
+    }
+
     .form-container {
       display: flex;
       flex-direction: column;
       align-items: center;
       text-align: center;
+      margin-top: 150px; /* 修正：フォームの位置を少し下げる */
     }
+
     .field {
       margin-bottom: 15px;
+      display: flex;
+      justify-content: center;
     }
+
+    .field label {
+      display: block;
+      width: 100%;
+    }
+
+    .field input {
+      display: block;
+      width: 100%;
+      max-width: 300px; /* 修正：入力欄を中央寄せ */
+    }
+
     .actions {
       text-align: center;
     }
+
+    .actions input[type="submit"] {
+      background-color: #ff69b4; /* ホットピンク */
+      color: white;
+      border: none;
+      border-radius: 20px;
+      padding: 10px 20px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .actions input[type="submit"]:hover {
+      background-color: #ff85c2; /* 少し明るいピンク */
+      transform: scale(1.1); /* マウスオーバーで大きくなる */
+    }
+
     .links {
       text-align: center;
+    }
+
+    footer {
+      background-color: #ffd54f; /* パステルイエロー */
+      text-align: center;
+      padding: 10px;
+      color: white;
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+    }
+
+    /* dentist-day.png のバウンスアニメーション */
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+
+    .walking-image {
+      position: absolute;
+      bottom: 100px; /* 画像の位置を調整 */
+      width: 50px;
+      height: 50px;
+      animation: bounce 2s infinite;
     }
   </style>
 </head>
 <body>
-  <div>
-    <h2>ログイン</h2>
+  <header>
+    <h1>ログイン</h1>
+  </header>
 
-    <div class="form-container">
-      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        <div class="field">
-          <%= f.label :email, "メールアドレス" %><br />
-          <%= f.email_field :email, autofocus: true %>
-        </div>
-        <div class="field">
-          <%= f.label :password, "パスワード" %><br />
-          <%= f.password_field :password, autocomplete: "off" %>
-        </div>
-        <div class="actions">
-          <%= f.submit "ログイン" %>
-        </div>
-      <% end %>
-    </div>
-
-    <div class="links">
-      <%= render "devise/shared/links" %>
-    </div>
+  <div class="form-container">
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <!-- 上から二つ目のログイン見出しを削除 -->
+      <div class="field">
+        <%= f.label :email, "メールアドレス" %><br />
+        <%= f.email_field :email, autofocus: true %>
+      </div>
+      <div class="field">
+        <%= f.label :password, "パスワード" %><br />
+        <%= f.password_field :password, autocomplete: "off" %>
+      </div>
+      <div class="actions">
+        <%= f.submit "ログイン" %>
+      </div>
+    <% end %>
   </div>
+
+  <div class="links">
+    <%= render "devise/shared/links" %>
+  </div>
+
+  <img src="<%= asset_path('dentist-day.png') %>" alt="バウンス画像" class="walking-image">
+
+  <footer>
+    <p>© 2025 シャカシャカにっき All Rights Reserved.</p>
+  </footer>
 </body>
 </html>

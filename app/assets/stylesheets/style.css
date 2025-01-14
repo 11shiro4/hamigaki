@@ -52,7 +52,7 @@ a {
 /* 全体設定 */
 body {
   font-family: 'Press Start 2P', sans-serif; /* ゲームっぽいフォント */
-  background: linear-gradient(90deg, #ffecb3, #ffe082);
+  background: linear-gradient(90deg, #ffebee, #e8f5e9, #fffde7); /* ベビーピンク、ミントグリーン、パステルイエローのグラデーション */
   margin: 0;
   padding: 0;
   color: #333;
@@ -60,7 +60,7 @@ body {
 
 /* ヘッダー */
 header {
-  background-color: #ffc107;
+  background-color: #ffd54f; /* パステルイエロー */
   text-align: center;
   padding: 20px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -82,7 +82,7 @@ main {
 /* ボタンスタイル */
 button,
 .btn-primary {
-  background: #ff9800;
+  background: #ffb74d; /* 柔らかいオレンジ */
   border: none;
   border-radius: 10px;
   padding: 10px 20px;
@@ -95,7 +95,7 @@ button,
 
 button:hover,
 .btn-primary:hover {
-  background: #e65100;
+  background: #ffa726;
 }
 
 /* リストスタイル */
@@ -122,8 +122,8 @@ ul li img {
 
 /* フォーム */
 form {
-  background: #fffde7;
-  border: 2px solid #ffcc80;
+  background: #e3f2fd; /* ライトブルー */
+  border: 2px solid #90caf9; /* ソフトブルー */
   border-radius: 10px;
   padding: 20px;
   margin: 20px 0;
@@ -139,14 +139,14 @@ form input,
 form textarea {
   width: 100%;
   padding: 10px;
-  border: 2px solid #ffcc80;
+  border: 2px solid #90caf9; /* ソフトブルー */
   border-radius: 5px;
   margin-bottom: 10px;
 }
 
 /* フッター */
 footer {
-  background-color: #ffc107;
+  background-color: #ffd54f; /* パステルイエロー */
   text-align: center;
   padding: 10px;
   color: white;
@@ -157,7 +157,7 @@ footer {
 
 /* タイトルセクション */
 .title {
-  background: #ff6f00;
+  background: #a5d6a7; /* ミントグリーン */
   color: white;
   padding: 10px;
   border-radius: 10px;
