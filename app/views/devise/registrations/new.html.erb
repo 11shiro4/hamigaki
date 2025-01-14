@@ -83,6 +83,21 @@
       font-size: 2rem; /* 他のページと揃える */
       color: #fff;
     }
+    .cute-button {
+      background-color: #ff69b4; /* ピンク色 */
+      color: white;
+      border: none;
+      border-radius: 5px; /* 丸角 */
+      padding: 10px 20px;
+      font-size: 1rem;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.3s, transform 0.3s;
+    }
+    .cute-button:hover {
+      background-color: #ff85c0; /* 少し明るいピンク色 */
+      transform: translateY(-2px);
+    }
   </style>
 </head>
 <body>
@@ -135,7 +150,7 @@
       </div>
 
       <div class="actions">
-        <%= f.submit "しんきとうろく" %>
+        <%= f.submit "OK", class: "cute-button" %>
       </div>
     <% end %>
   </div>
