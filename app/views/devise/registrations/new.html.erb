@@ -9,94 +9,97 @@
     body {
       display: flex;
       flex-direction: column;
-      justify-content: flex-start; /* ヘッダーを含むために変更 */
       align-items: center;
+      justify-content: center; /* 追加: 縦方向に中央揃え */
+      height: 100vh;
       font-family: 'DotGothic16', sans-serif; /* ドットゴシックフォントを適用 */
       text-align: center;
       margin: 0;
-      padding-top: 100px; /* ヘッダーの高さ分の余白を追加 */
-      position: relative; /* 相対位置を追加 */
+      padding-top: 50px; /* 上に余白を追加 */
+      position: relative;
     }
+
+    header {
+      background-color: #ffc107; /* パステルイエロー */
+      text-align: center;
+      padding: 20px;
+      width: 100%;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      position: fixed; /* ヘッダーをページの上部に固定 */
+      top: 0;
+      left: 0;
+      right: 0;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+      color: #fff;
+    }
+
     .form-container {
       display: flex;
       flex-direction: column;
       align-items: center;
       text-align: center;
-      flex: 1;
-      margin-top: 20px; /* フォームを下げるための余白を追加 */
+      margin-top: -50px; /* フォームの位置を少し上に */
     }
+
     .field {
       margin-bottom: 15px;
-      text-align: center; /* ラベルとフィールドを中央揃えに */
-    }
-    .field-left,
-    .field-right {
       display: flex;
-      flex-direction: column;
-      margin: 0 15px;
+      justify-content: center;
     }
-    .fields-row {
-      display: flex;
-      justify-content: center; /* フィールドを横に並べる */
+
+    .field label {
+      display: block;
+      width: 100%;
     }
+
+    .field input {
+      display: block;
+      width: 100%;
+      max-width: 300px;
+    }
+
     .actions {
       text-align: center;
-      margin-top: 20px;
     }
+
+    .actions input[type="submit"] {
+      background-color: #ff69b4; /* ホットピンク */
+      color: white;
+      border: none;
+      border-radius: 20px;
+      padding: 10px 20px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .actions input[type="submit"]:hover {
+      background-color: #ff85c2; /* 少し明るいピンク */
+      transform: scale(1.1); /* マウスオーバーで大きくなる */
+    }
+
     .links {
       text-align: center;
     }
-    input[type="email"],
-    input[type="text"],
-    input[type="password"],
-    input[type="number"] {
-      width: 300px;
-      padding: 10px;
-      text-align: center;
-    }
+
     .back-button {
       position: absolute;
       left: 20px;
       top: 20px;
     }
+
     footer {
-      background-color: #ffd54f;
+      background-color: #ffd54f; /* パステルイエロー */
       text-align: center;
       padding: 10px;
       color: white;
-      width: 100%;
-      position: fixed;
+      position: absolute;
       bottom: 0;
-    }
-    header {
-      background-color: #ffd54f; /* パステルイエロー */
-      text-align: center;
-      padding: 20px; /* サイズを他のページと揃える */
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       width: 100%;
-      position: fixed;
-      top: 0;
-      left: 0;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 2rem; /* 他のページと揃える */
-      color: #fff;
-    }
-    .cute-button {
-      background-color: #ff69b4; /* ピンク色 */
-      color: white;
-      border: none;
-      border-radius: 5px; /* 丸角 */
-      padding: 10px 20px;
-      font-size: 1rem;
-      cursor: pointer;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      transition: background-color 0.3s, transform 0.3s;
-    }
-    .cute-button:hover {
-      background-color: #ff85c0; /* 少し明るいピンク色 */
-      transform: translateY(-2px);
     }
   </style>
 </head>
@@ -122,35 +125,31 @@
         </div>
       <% end %>
 
-      <div class="fields-row">
-        <div class="field-left">
-          <div class="field">
-            <%= f.label :nickname, "ニックネーム" %>
-            <%= f.text_field :nickname, autofocus: true %>
-          </div>
-          <div class="field">
-            <%= f.label :age, "ねんれい" %>
-            <%= f.number_field :age, min: 0 %>
-          </div>
-        </div>
-        <div class="field-right">
-          <div class="field">
-            <%= f.label :email, "メールアドレス" %>
-            <%= f.email_field :email, autofocus: true %>
-          </div>
-          <div class="field">
-            <%= f.label :password, "パスワード" %>
-            <%= f.password_field :password, autocomplete: "off" %>
-          </div>
-          <div class="field">
-            <%= f.label :password_confirmation, "パスワード（かくにんよう）" %>
-            <%= f.password_field :password_confirmation, autocomplete: "off" %>
-          </div>
-        </div>
+      <div class="field">
+        <%= f.label :nickname, "ニックネーム" %>
+        <%= f.text_field :nickname, autofocus: true %>
+      </div>
+
+      <div class="field">
+        <%= f.label :age, "年齢" %>
+        <%= f.number_field :age, min: 0 %>
+      </div>
+
+      <div class="field">
+        <%= f.label :email, "メールアドレス" %>
+        <%= f.email_field :email %>
+      </div>
+      <div class="field">
+        <%= f.label :password, "パスワード" %>
+        <%= f.password_field :password, autocomplete: "off" %>
+      </div>
+      <div class="field">
+        <%= f.label :password_confirmation, "パスワード（確認用）" %>
+        <%= f.password_field :password_confirmation, autocomplete: "off" %>
       </div>
 
       <div class="actions">
-        <%= f.submit "OK", class: "cute-button" %>
+        <%= f.submit "サインアップ", class: "cute-button" %>
       </div>
     <% end %>
   </div>
