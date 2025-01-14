@@ -15,6 +15,7 @@
       font-family: 'DotGothic16', sans-serif; /* ドットゴシックフォントを適用 */
       text-align: center;
       margin: 0;
+      position: relative; /* 相対位置を追加 */
     }
     h2 {
       font-family: 'DotGothic16', sans-serif;
@@ -25,7 +26,7 @@
       flex-direction: column;
       align-items: center;
       text-align: center;
-      flex: 1; /* フッターの位置調整のために追加 */
+      flex: 1;
     }
     .field {
       margin-bottom: 15px;
@@ -52,12 +53,17 @@
     input[type="text"],
     input[type="password"],
     input[type="number"] {
-      width: 300px; /* 横長のフォームにする */
+      width: 300px;
       padding: 10px;
-      text-align: center; /* 入力フィールドの文字を中央揃えに */
+      text-align: center;
+    }
+    .back-button {
+      position: absolute;
+      left: 20px;
+      top: 20px;
     }
     footer {
-      background-color: #ffd54f; /* パステルイエロー */
+      background-color: #ffd54f;
       text-align: center;
       padding: 10px;
       color: white;
@@ -66,6 +72,11 @@
   </style>
 </head>
 <body>
+
+  <%= link_to root_path, class: "back-button" do %>
+    <%= image_tag 'arrows.png', alt: '戻る', width: 40, height: 40 %>
+  <% end %>
+
   <div>
     <h2>サインアップ</h2>
 
