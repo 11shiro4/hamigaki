@@ -84,6 +84,37 @@
       padding: 10px;
       color: white;
     }
+
+    header {
+      background-color: #ffc107; /* パステルイエロー */
+      text-align: center;
+      padding: 20px; /* サイズを他のページと揃える */
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2rem; /* 他のページと揃える */
+      color: #fff;
+    }
+
+    .logout-button {
+      position: absolute;
+      right: 20px;
+      top: 20px;
+      transition: transform 0.3s ease;
+    }
+
+    .logout-button:hover {
+      transform: scale(1.2);
+    }
   </style>
   <script>
     function randomPositionWithinBounds(minLeft, maxLeft, minTop, maxTop) {
@@ -137,6 +168,11 @@
 <body class="<%= body_class %>">
   <header>
     <h1>シャカシャカにっき</h1>
+    <% if kid_signed_in? %>
+      <%= link_to destroy_kid_session_path, method: :delete, class: "logout-button" do %>
+        <%= image_tag 'logout.png', alt: 'サインアウト', width: 40, height: 40 %>
+      <% end %>
+    <% end %>
   </header>
 
   <main>
@@ -152,11 +188,7 @@
     </ul>
 
     <div class="actions">
-      <% if kid_signed_in? %>
-        <%= link_to destroy_kid_session_path, method: :delete, class: "btn-primary" do %>
-          <%= image_tag 'logout.png', alt: 'サインアウト', width: 40, height: 40 %>
-        <% end %>
-      <% else %>
+      <% unless kid_signed_in? %>
         <%= link_to new_kid_registration_path, class: "btn-primary" do %>
           <%= image_tag 'user.png', alt: 'しんきとうろく', width: 40, height: 40 %>
         <% end %>
