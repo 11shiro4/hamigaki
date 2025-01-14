@@ -9,17 +9,13 @@
     body {
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      justify-content: flex-start; /* ヘッダーを含むために変更 */
       align-items: center;
-      height: 100vh;
       font-family: 'DotGothic16', sans-serif; /* ドットゴシックフォントを適用 */
       text-align: center;
       margin: 0;
+      padding-top: 100px; /* ヘッダーの高さ分の余白を追加 */
       position: relative; /* 相対位置を追加 */
-    }
-    h2 {
-      font-family: 'DotGothic16', sans-serif;
-      font-size: 2em;
     }
     .form-container {
       display: flex;
@@ -27,6 +23,7 @@
       align-items: center;
       text-align: center;
       flex: 1;
+      margin-top: 20px; /* フォームを下げるための余白を追加 */
     }
     .field {
       margin-bottom: 15px;
@@ -68,67 +65,83 @@
       padding: 10px;
       color: white;
       width: 100%;
+      position: fixed;
+      bottom: 0;
+    }
+    header {
+      background-color: #ffd54f; /* パステルイエロー */
+      text-align: center;
+      padding: 20px; /* サイズを他のページと揃える */
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2rem; /* 他のページと揃える */
+      color: #fff;
     }
   </style>
 </head>
 <body>
+  <header>
+    <h1>サインアップ</h1>
+  </header>
 
   <%= link_to root_path, class: "back-button" do %>
     <%= image_tag 'arrows.png', alt: '戻る', width: 40, height: 40 %>
   <% end %>
 
-  <div>
-    <h2>サインアップ</h2>
-
-    <div class="form-container">
-      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-        <% if resource.errors.any? %>
-          <div id="error_explanation">
-            <h2><%= resource.errors.count %> つ のエラーがはっせいしたよ</h2>
-            <ul>
-              <% resource.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-              <% end %>
-            </ul>
-          </div>
-        <% end %>
-
-        <div class="fields-row">
-          <div class="field-left">
-            <div class="field">
-              <%= f.label :nickname, "ニックネーム" %> 
-              <%= f.text_field :nickname, autofocus: true %>
-            </div>
-            <div class="field">
-              <%= f.label :age, "ねんれい" %>
-              <%= f.number_field :age, min: 0 %>
-            </div>
-          </div>
-          <div class="field-right">
-            <div class="field">
-              <%= f.label :email, "メールアドレス" %>
-              <%= f.email_field :email, autofocus: true %>
-            </div>
-            <div class="field">
-              <%= f.label :password, "パスワード" %>
-              <%= f.password_field :password, autocomplete: "off" %>
-            </div>
-            <div class="field">
-              <%= f.label :password_confirmation, "パスワード（かくにんよう）" %>
-              <%= f.password_field :password_confirmation, autocomplete: "off" %>
-            </div>
-          </div>
-        </div>
-
-        <div class="actions">
-          <%= f.submit "しんきとうろく" %>
+  <div class="form-container">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <% if resource.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= resource.errors.count %> つ のエラーがはっせいしたよ</h2>
+          <ul>
+            <% resource.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
         </div>
       <% end %>
-    </div>
 
-    <div class="links">
-      <%= render "devise/shared/links" %>
-    </div>
+      <div class="fields-row">
+        <div class="field-left">
+          <div class="field">
+            <%= f.label :nickname, "ニックネーム" %>
+            <%= f.text_field :nickname, autofocus: true %>
+          </div>
+          <div class="field">
+            <%= f.label :age, "ねんれい" %>
+            <%= f.number_field :age, min: 0 %>
+          </div>
+        </div>
+        <div class="field-right">
+          <div class="field">
+            <%= f.label :email, "メールアドレス" %>
+            <%= f.email_field :email, autofocus: true %>
+          </div>
+          <div class="field">
+            <%= f.label :password, "パスワード" %>
+            <%= f.password_field :password, autocomplete: "off" %>
+          </div>
+          <div class="field">
+            <%= f.label :password_confirmation, "パスワード（かくにんよう）" %>
+            <%= f.password_field :password_confirmation, autocomplete: "off" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "しんきとうろく" %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="links">
+    <%= render "devise/shared/links" %>
   </div>
 
   <footer>
