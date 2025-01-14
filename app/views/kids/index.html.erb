@@ -70,6 +70,22 @@
       margin-bottom: 20px;
     }
 
+    .floating {
+      animation: floating 3s ease-in-out infinite;
+    }
+
+    @keyframes floating {
+      0% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-20px);
+      }
+      100% {
+        transform: translateY(0);
+      }
+    }
+
     .virus-img, .star-img {
       width: 40px;
       height: 40px;
@@ -137,7 +153,7 @@
       for(let i = 0; i < brushingLogsCount; i++) {
         const starImg = document.createElement('img');
         starImg.src = '<%= asset_path('star-smile.png') %>';
-        starImg.classList.add('star-img');
+        starImg.classList.add('star-img', 'floating'); // floating クラスを追加
         const position = randomPositionWithinBounds(minLeft, maxLeft, minTop, maxTop);
         starImg.style.left = position.left;
         starImg.style.top = position.top;
@@ -147,7 +163,7 @@
       for(let i = brushingLogsCount; i < 3; i++) {
         const virusImg = document.createElement('img');
         virusImg.src = '<%= asset_path('virus.png') %>';
-        virusImg.classList.add('virus-img');
+        virusImg.classList.add('virus-img', 'floating'); // floating クラスを追加
         const position = randomPositionWithinBounds(minLeft, maxLeft, minTop, maxTop);
         virusImg.style.left = position.left;
         virusImg.style.top = position.top;
