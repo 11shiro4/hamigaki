@@ -36,6 +36,24 @@
       margin-bottom: 10px;
     }
 
+    .username-link {
+      color: #ff5722; /* 目立つ色 */
+      text-decoration: none;
+      font-weight: bold;
+      position: relative;
+    }
+
+    .username-link::after {
+      content: ' (ここをタップして)';
+      font-size: 0.8em;
+      color: #777;
+    }
+
+    .username-link:hover {
+      text-decoration: underline;
+      color: #e64a19; /* ホバー時の色 */
+    }
+
     .actions {
       margin-top: 20px;
       display: flex;
@@ -194,7 +212,7 @@
     <ul>
       <% if kid_signed_in? %>
         <li>
-          <%= link_to current_kid.nickname, current_kid %>
+          <%= link_to current_kid.nickname, current_kid, class: "username-link" %>
           <i class="fas fa-home"></i>
         </li>
       <% else %>

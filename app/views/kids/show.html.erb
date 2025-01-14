@@ -134,6 +134,10 @@ li {
   background: none;
   border: none;
   padding: 0;
+  display: flex;          
+  align-items: center;    
+  justify-content: center;
+  flex-direction: column;
 }
 
 .fixed-add-icon img {
@@ -144,6 +148,11 @@ li {
 
 .fixed-add-icon:hover img {
   transform: scale(1.1); /* アイコンを拡大するアニメーション */
+}
+
+.label {
+  font-size: 1.2rem; 
+  color: #777; 
 }
 
 footer {
@@ -211,7 +220,7 @@ footer {
 
   <%= link_to new_kid_brushing_log_path(current_kid), class: "btn-primary fixed-add-icon" do %>
     <%= image_tag 'toothpaste.png', alt: '新しい記録を追加' %>
-    <%= image_tag 'plus.png', alt: '追加' %>
+    <span class="label">きろくをのこす</span>
   <% end %>
 
   <footer>
