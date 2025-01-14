@@ -15,6 +15,7 @@
       text-align: center;
       margin: 0;
       padding-top: 50px; /* 追加: 上に余白を追加 */
+      overflow: hidden; /* エレメントのはみ出しを隠す */
     }
 
     header {
@@ -93,6 +94,20 @@
       bottom: 0;
       width: 100%;
     }
+
+    /* dentist-day.png のバウンスアニメーション */
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+
+    .walking-image {
+      position: absolute;
+      bottom: 100px; /* 画像の位置を調整 */
+      width: 50px;
+      height: 50px;
+      animation: bounce 2s infinite;
+    }
   </style>
 </head>
 <body>
@@ -120,6 +135,8 @@
   <div class="links">
     <%= render "devise/shared/links" %>
   </div>
+
+  <img src="<%= asset_path('dentist-day.png') %>" alt="バウンス画像" class="walking-image">
 
   <footer>
     <p>© 2025 シャカシャカにっき All Rights Reserved.</p>
