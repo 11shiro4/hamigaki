@@ -47,28 +47,19 @@
       right: 0;
       flex-shrink: 0;
       display: flex; /* フレックスボックスレイアウトを使用 */
-      justify-content: center; /* 子要素を中央に配置 */
-      align-items: center; /* 子要素を垂直方向に中央揃え */
+      justify-content: center;
+      align-items: center;
     }
 
-    .header-content {
-      display: flex; /* フレックスボックスレイアウトを使用 */
-      justify-content: space-between; /* 子要素を左右に配置 */
-      width: 100%;
-      max-width: 1200px; /* 最大幅を設定 */
-    }
-
-    .header-content h1 {
+    header h1 {
       margin: 0;
       font-size: 2.5rem;
       color: #fff;
-      flex-grow: 1; /* 中央揃えのために成長させる */
-      text-align: center; /* テキストも中央揃えに */
     }
 
     .link-back {
-      display: flex;
-      align-items: center;
+      position: absolute; /* ヘッダー内に絶対位置 */
+      left: 20px; /* 左側に若干内側に配置 */
     }
 
     .link-back img {
@@ -182,12 +173,10 @@
 </head>
 <body>
   <header>
-    <div class="header-content">
-      <div class="link-back">
-        <%= link_to image_tag('arrows.png', alt: 'もどる'), @kid %>
-      </div>
-      <h1>プロフィールをへんしゅう</h1>
+    <div class="link-back">
+      <%= link_to image_tag('arrows.png', alt: 'もどる'), @kid %>
     </div>
+      <h1>プロフィールをへんしゅう</h1>
   </header>
 
   <main>
