@@ -29,12 +29,30 @@
     }
     .field {
       margin-bottom: 15px;
+      text-align: left; /* ラベルとフィールドを左揃えに */
+    }
+    .field-left,
+    .field-right {
+      display: flex;
+      flex-direction: column;
+      margin: 0 15px;
+    }
+    .fields-row {
+      display: flex;
+      justify-content: center; /* フィールドを横に並べる */
     }
     .actions {
       text-align: center;
+      margin-top: 20px;
     }
     .links {
       text-align: center;
+    }
+    input[type="email"],
+    input[type="text"],
+    input[type="password"] {
+      width: 300px; /* 横長のフォームにする */
+      padding: 10px;
     }
     footer {
       background-color: #ffd54f; /* パステルイエロー */
@@ -62,29 +80,27 @@
           </div>
         <% end %>
 
-        <div class="field">
-          <%= f.label :email, "メールアドレス" %>
-          <%= f.email_field :email, autofocus: true %>
-        </div>
-
-        <div class="field">
-          <%= f.label :nickname, "ニックネーム" %> 
-          <%= f.text_field :nickname, autofocus: true %>
-        </div>
-
-        <div class="field">
-          <%= f.label :age, "ねんれい" %> 
-          <%= f.number_field :age %>
-        </div>
-
-        <div class="field">
-          <%= f.label :password, "パスワード" %>
-          <%= f.password_field :password, autocomplete: "off" %>
-        </div>
-
-        <div class="field">
-          <%= f.label :password_confirmation, "パスワード（かくにんよう）" %>
-          <%= f.password_field :password_confirmation, autocomplete: "off" %>
+        <div class="fields-row">
+          <div class="field-left">
+            <div class="field">
+              <%= f.label :email, "メールアドレス" %>
+              <%= f.email_field :email, autofocus: true %>
+            </div>
+            <div class="field">
+              <%= f.label :nickname, "ニックネーム" %> 
+              <%= f.text_field :nickname, autofocus: true %>
+            </div>
+          </div>
+          <div class="field-right">
+            <div class="field">
+              <%= f.label :password, "パスワード" %>
+              <%= f.password_field :password, autocomplete: "off" %>
+            </div>
+            <div class="field">
+              <%= f.label :password_confirmation, "パスワード（かくにんよう）" %>
+              <%= f.password_field :password_confirmation, autocomplete: "off" %>
+            </div>
+          </div>
         </div>
 
         <div class="actions">
