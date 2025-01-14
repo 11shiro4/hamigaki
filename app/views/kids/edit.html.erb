@@ -32,20 +32,54 @@
       display: flex;
       flex-direction: column;
       height: 100vh;
+      text-align: center;
+      overflow: hidden; /* エレメントのはみ出しを隠す */
     }
 
     header {
       background-color: #ffd54f; /* パステルイエロー */
-      text-align: center;
       padding: 20px;
+      width: 100%;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      position: fixed; /* 追加: ヘッダーをページの上部に固定 */
+      top: 0;
+      left: 0;
+      right: 0;
       flex-shrink: 0;
+      display: flex; /* フレックスボックスレイアウトを使用 */
+      justify-content: center; /* 子要素を中央に配置 */
+      align-items: center; /* 子要素を垂直方向に中央揃え */
     }
 
-    header h1 {
+    .header-content {
+      display: flex; /* フレックスボックスレイアウトを使用 */
+      justify-content: space-between; /* 子要素を左右に配置 */
+      width: 100%;
+      max-width: 1200px; /* 最大幅を設定 */
+    }
+
+    .header-content h1 {
       margin: 0;
       font-size: 2.5rem;
       color: #fff;
+      flex-grow: 1; /* 中央揃えのために成長させる */
+      text-align: center; /* テキストも中央揃えに */
+    }
+
+    .link-back {
+      display: flex;
+      align-items: center;
+    }
+
+    .link-back img {
+      width: 40px; /* 幅 */
+      height: 40px; /* 高さ */
+      margin-right: 10px; /* テキストとの間隔を調整 */
+      transition: transform 0.3s; /* 動きにアニメーションを追加（オプション） */
+    }
+
+    .link-back img:hover {
+      transform: translateY(-5px); /* ホバー時に少し上に移動 */
     }
 
     main {
@@ -58,57 +92,54 @@
       text-align: center;
       max-width: 800px;
       margin: 0 auto;
-    }
-
-    main .link-back {
-      margin-bottom: 10px; /* アイコンの位置を調整 */
+      margin-top: 150px; /* フォームの位置を少し下げる */
     }
 
     main .field {
       margin-bottom: 15px; /* 各フィールドの間隔を狭める */
+      display: flex;
+      justify-content: center;
     }
 
-    main .actions {
-      margin-top: 20px;
+    main .field label {
+      display: block;
+      width: 100%;
+      text-align: left; /* ラベルを左揃えにする */
     }
 
-    .btn-primary {
-      background: #ffb74d; /* 柔らかいオレンジ */
-      border: none;
-      border-radius: 10px;
-      padding: 10px 20px;
-      font-size: 1.2rem;
-      color: white;
-      cursor: pointer;
-      text-shadow: 1px 1px 2px #555;
-      transition: background 0.3s;
-      text-decoration: none;
-    }
-
-    .btn-primary:hover {
-      background: #ffa726;
-    }
-
-    .link-back img {
-      width: 40px; /* 幅 */
-      height: 40px; /* 高さ */
-      transition: transform 0.3s; /* 動きにアニメーションを追加（オプション） */
-    }
-
-    .link-back img:hover {
-     transform: translateY(-5px); /* ホバー時に少し上に移動 */
-    }
-
-    .field input[type="text"],
-    .field input[type="email"],
-    .field input[type="number"] {
-      width: 300px; /* 幅を広げる */
-      text-align: center; /* テキストを中央揃えにする */
+    main .field input {
+      display: block;
+      width: 100%;
+      max-width: 300px; /* フィールドの最大幅を設定 */
+      text-align: left; /* テキストを左揃えにする */
       font-size: 1rem; /* 字の大きさを調整 */
       padding: 10px;
       border: 2px solid #90caf9; /* ソフトブルー */
       border-radius: 5px;
       margin-bottom: 10px;
+    }
+
+    main .actions {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .btn-primary {
+      background: #ff69b4; /* ホットピンク */
+      border: none;
+      border-radius: 20px; /* 円形にする */
+      padding: 10px 20px;
+      font-size: 1.2rem;
+      color: white;
+      cursor: pointer;
+      text-shadow: 1px 1px 2px #555;
+      transition: background 0.3s, transform 0.3s ease; /* transform の追加 */
+      text-decoration: none;
+    }
+
+    .btn-primary:hover {
+      background-color: #ff85c2;
+      transform: scale(1.1); /* ホバー時に大きくする */
     }
 
     footer {
@@ -129,6 +160,8 @@
       border-radius: 10px;
       padding: 20px;
       margin: 20px 0;
+      width: 100%;
+      max-width: 600px; /* フォーム全体の最大幅を設定 */
     }
 
     form label {
@@ -149,13 +182,15 @@
 </head>
 <body>
   <header>
-    <h1>プロフィールをへんしゅう</h1>
+    <div class="header-content">
+      <div class="link-back">
+        <%= link_to image_tag('arrows.png', alt: 'もどる'), @kid %>
+      </div>
+      <h1>プロフィールをへんしゅう</h1>
+    </div>
   </header>
 
   <main>
-    <div class="link-back">
-      <%= link_to image_tag('arrows.png', alt: 'もどる'), @kid %>
-    </div>
     <%= form_with(model: @kid, local: true) do |form| %>
       <% if @kid.errors.any? %>
         <div id="error_explanation">
