@@ -16,7 +16,6 @@
 | id           | integer   | null: false, primary key | ログID（自動生成）
 | kid_nickname | string    | null: false, foreign key | 子供ニックネーム
 | date         | date      | null: false              | 日付
-| brushed_at   | datetime  | null: false              | 記録をつけた時間
 | time_of_day  | integer   | null: false              | 歯磨きしたトータルの記録
 | icon_type    | varchar   | null: false              | 三段階評価のアイコン
 ### Association
@@ -63,12 +62,7 @@
 ---
 
 ## データベース設計  
-test.png
-
----
-
-## 画面遷移図  
-画面遷移図を添付。  
+https://gyazo.com/e66d2b73ca12b4d47b18fc7f5cdef326
 
 ---
 
