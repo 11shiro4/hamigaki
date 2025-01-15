@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :kids
   root "kids#index"
-  get "kids#new"
+  get "kids/new", to: "kids#new"
   post "signup", to: "kids#create"
 
   resources :kids do
