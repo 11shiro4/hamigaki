@@ -1,24 +1,27 @@
-# README
+# DB 設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Kids table
+| Column       | Type      | Options                   | Description |
+|--------------|-----------|---------------------------|-------------|
+| nickname     | string    | null: false               | ニックネーム
+| age          | integer   | null: false               | 年齢
 
-Things you may want to cover:
+### Association
+* has_many :brushing_logs, foreign_key: "kid_nickname"
+* has_many :kids_bacteria, foreign_key: "kid_nickname"
 
-* Ruby version
 
-* System dependencies
+## BrushingLogs table
+| Column       | Type      | Options                  | Description |
+|--------------|-----------|--------------------------|-------------|
+| id           | integer   | null: false, primary key | ログID（自動生成）
+| kid_nickname | string    | null: false, foreign key | 子供ニックネーム（Kidsテーブルの外部キー）
+| date         | date      | null: false              | 日付
+| time_of_day  | integer   | null: false              | 歯磨きの時間帯
+| brushed_at   | datetime  | null: false              | 記録をつけた時間
+| icon_type    | varchar   | null: false              | 三段階評価のアイコン
+### Association
+- belongs_to :kid, class_name: "Kids", foreign_key: "kid_nickname"
 
-* Configuration
 
-* Database creation
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
