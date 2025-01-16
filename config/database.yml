@@ -8,6 +8,8 @@ default: &default
 development:
   <<: *default
   database: hamigaki_development
+  adapter: postgresql
+  url: <%= ENV['DATABASE_URL'] %>
 
 test:
   <<: *default
