@@ -1,26 +1,3 @@
-# DB 設計
-
-## Kids table
-| Column       | Type      | Options                   | Description |
-|--------------|-----------|---------------------------|-------------|
-| nickname     | string    | null: false               | ニックネーム
-| age          | integer   | null: false               | 年齢
-
-### Association
-* has_many :brushing_logs
-
-
-## BrushingLogs table
-| Column       | Type      | Options                  | Description |
-|--------------|-----------|--------------------------|-------------|
-| id           | integer   | null: false, primary key | ログID（自動生成）
-| kid_nickname | string    | null: false, foreign key | 子供ニックネーム
-| date         | date      | null: false              | 日付
-| time_of_day  | integer   | null: false              | 歯磨きしたトータルの記録
-| icon_type    | varchar   | null: false              | 三段階評価のアイコン
-### Association
-- belongs_to :kid
-
 # シャカシャカにっき
 
 ## アプリケーション概要  
@@ -62,29 +39,66 @@
 ---
 
 ## データベース設計  
-https://gyazo.com/e66d2b73ca12b4d47b18fc7f5cdef326
+## Kids table
+| Column       | Type      | Options                   | Description |
+|--------------|-----------|---------------------------|-------------|
+| nickname     | string    | null: false               | ニックネーム
+| age          | integer   | null: false               | 年齢
+
+### Association
+* has_many :brushing_logs
+
+
+## BrushingLogs table
+| Column       | Type      | Options                  | Description |
+|--------------|-----------|--------------------------|-------------|
+| id           | integer   | null: false, primary key | ログID（自動生成）
+| kid_nickname | string    | null: false, foreign key | 子供ニックネーム
+| date         | date      | null: false              | 日付
+| time_of_day  | integer   | null: false              | 歯磨きしたトータルの記録
+| icon_type    | varchar   | null: false              | 三段階評価のアイコン
+### Association
+- belongs_to :kid
+- [データベース設計図](https://gyazo.com/e66d2b73ca12b4d47b18fc7f5cdef326)
 
 ---
 
 ## 画面遷移図  
-画面遷移図を添付。  
+- [画面遷移図](https://gyazo.com/2d9c49b74d8eb9866298d9da5a50785b)
 
 ---
 
-## 開発環境  
-- **使用言語**: Ruby, JavaScript  
-- **デプロイ先**: Render  
+## 開発環境
+- **使用言語**: Ruby, JavaScript
+- **フレームワーク**: Ruby on Rails
+- **データベース**: PostgreSQL
+- **バージョン管理**: GitHub
+- **デプロイ先**: Render
 
 ---
 
-## ローカルでの動作方法  
-以下のコマンドを実行してください:  
-```bash
+## ローカルでの動作方法
+以下のコマンドを実行してください:
+
 git clone https://github.com/rails/rails.git
-cd hamigaki
-bundle install
-rails db:create db:migrate
-rails s
+- **%** cd hamigaki
+- **%** bundle install
+- **%** rails db:create db:migrate
+- **%** rails s
 
 
+---
+## 工夫したポイント
 
+シンプルなUI/UX: 歯磨き記録は、ウイルスからスターへの変化という分かりやすいアニメーションで表現し、達成感を視覚的にアピールしました。
+
+---
+
+## 改善点
+
+セキュリティ: ユーザーの個人情報を適切に保護するためのセキュリティ対策を強化したいです。
+
+---
+## 開発期間
+
+約3週間かけて開発を行いました。
