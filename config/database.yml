@@ -16,4 +16,5 @@ test:
 production:
   <<: *default
   adapter: postgresql
+  database: hamigaki_development
   url: <%= ENV['DATABASE_URL'] %>
