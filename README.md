@@ -66,6 +66,11 @@ https://gyazo.com/e66d2b73ca12b4d47b18fc7f5cdef326
 
 ---
 
+## 画面遷移図  
+画面遷移図を添付。  
+
+---
+
 ## 開発環境  
 - **使用言語**: Ruby, JavaScript  
 - **デプロイ先**: Render  

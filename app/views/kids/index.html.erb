@@ -202,7 +202,7 @@
   <header>
     <h1>シャカシャカにっき</h1>
     <% if kid_signed_in? %>
-      <%= link_to destroy_kid_session_path, method: :delete, class: "logout-button" do %>
+      <%= link_to destroy_kid_session_path, data: { turbo_method: :delete },class: "logout-button" do %>
         <%= image_tag 'logout.png', alt: 'サインアウト', width: 40, height: 40 %>
       <% end %>
     <% end %>

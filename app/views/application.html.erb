@@ -11,7 +11,7 @@
 </head>
 <body>
   <%= link_to 'New Kid', new_kid_path %>
-  <%= link_to 'Logout', destroy_kid_session_path, method: :delete %> 
+  <%= link_to 'Logout', destroy_kid_session_path, data: { turbo_method: :delete } %> 
   <%= yield %>
 </body>
 </html>
