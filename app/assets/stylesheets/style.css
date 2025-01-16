@@ -34,20 +34,24 @@ a {
   color: #3b4043;
 }
 
-/* タブレット対応 */
-@media (max-width: 1024px) {
-  .inner {
-    width: 90%;
-    margin: 0 auto;
-  }
-  .page-heading {
-    font-size: 24px;
-  }
-  .card {
-    width: 48%;
-    margin-bottom: 40px;
-  }
-}
+/* PC表示時 */
+p {
+  font-size: 30px;
+ }
+ 
+ /* タブレット表示時 */
+ @media (max-width: 1000px) {
+   p {
+     font-size: 25px;
+   }
+ }
+ 
+ /* スマホ表示時 */
+ @media (max-width: 500px) {
+   p {
+     font-size: 20px;
+   }
+ }
 
 /* 全体設定 */
 body {
