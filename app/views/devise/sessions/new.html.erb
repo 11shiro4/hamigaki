@@ -9,13 +9,10 @@
     body {
       display: flex;
       flex-direction: column;
-      align-items: center;
-      height: 100vh;
       font-family: 'DotGothic16', sans-serif; /* ドットゴシックフォントを適用 */
       text-align: center;
       margin: 0;
-      padding-top: 50px; /* 追加: 上に余白を追加 */
-      overflow: hidden; /* エレメントのはみ出しを隠す */
+      height: 100vh;
     }
 
     header {
@@ -24,10 +21,7 @@
       padding: 20px;
       width: 100%;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      position: fixed; /* 追加: ヘッダーをページの上部に固定 */
-      top: 0;
-      left: 0;
-      right: 0;
+      flex: 0 0 auto; /* 固定の高さを維持 */
     }
 
     header h1 {
@@ -36,12 +30,21 @@
       color: #fff;
     }
 
+    .main-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      flex: 1; /* 中央に配置するためのフレックス要素 */
+      padding: 20px;
+      position: relative; /* 要素の相対位置 */
+    }
+
     .form-container {
       display: flex;
       flex-direction: column;
       align-items: center;
       text-align: center;
-      margin-top: 150px; /* 修正：フォームの位置を少し下げる */
     }
 
     .field {
@@ -83,6 +86,7 @@
 
     .links {
       text-align: center;
+      margin-top: 10px;
     }
 
     footer {
@@ -90,9 +94,7 @@
       text-align: center;
       padding: 10px;
       color: white;
-      position: absolute;
-      bottom: 0;
-      width: 100%;
+      flex: 0 0 auto; /* 固定の高さを維持 */
     }
 
     /* dentist-day.png のバウンスアニメーション */
@@ -102,11 +104,18 @@
     }
 
     .walking-image {
-      position: absolute;
-      bottom: 100px; /* 画像の位置を調整 */
+      position: absolute; /* 相対的に固定位置にする */
+      bottom: 10%; /* 画像の位置を調整 */
+      left: 10px; /* 左側に配置 */
       width: 50px;
       height: 50px;
       animation: bounce 2s infinite;
+    }
+
+    @media screen and (min-width: 600px) {
+      .walking-image {
+        left: 15%; /* 大きな画面では少し内側に */
+      }
     }
   </style>
 </head>
@@ -115,28 +124,29 @@
     <h1>ログイン</h1>
   </header>
 
-  <div class="form-container">
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      <!-- 上から二つ目のログイン見出しを削除 -->
-      <div class="field">
-        <%= f.label :email, "メールアドレス" %><br />
-        <%= f.email_field :email, autofocus: true %>
-      </div>
-      <div class="field">
-        <%= f.label :password, "パスワード" %><br />
-        <%= f.password_field :password, autocomplete: "off" %>
-      </div>
-      <div class="actions">
-        <%= f.submit "ログイン" %>
-      </div>
-    <% end %>
-  </div>
+  <div class="main-content">
+    <img src="<%= asset_path('dentist-day.png') %>" alt="バウンス画像" class="walking-image">
+    <div class="form-container">
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <!-- 上から二つ目のログイン見出しを削除 -->
+        <div class="field">
+          <%= f.label :email, "メールアドレス" %><br />
+          <%= f.email_field :email, autofocus: true %>
+        </div>
+        <div class="field">
+          <%= f.label :password, "パスワード" %><br />
+          <%= f.password_field :password, autocomplete: "off" %>
+        </div>
+        <div class="actions">
+          <%= f.submit "ログイン" %>
+        </div>
+      <% end %>
+    </div>
 
-  <div class="links">
-    <%= render "devise/shared/links" %>
+    <div class="links">
+      <%= render "devise/shared/links" %>
+    </div>
   </div>
-
-  <img src="<%= asset_path('dentist-day.png') %>" alt="バウンス画像" class="walking-image">
 
   <footer>
     <p>© 2025 シャカシャカにっき All Rights Reserved.</p>

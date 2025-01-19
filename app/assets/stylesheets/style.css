@@ -51,7 +51,21 @@ p {
    p {
      font-size: 20px;
    }
+
+   header h1 {
+     font-size: 2rem;
+   }
+
+   footer {
+     font-size: 0.8rem;
+   }
+
+   .back-button img {
+     width: 30px;
+     height: 30px;
+   }
  }
+  
 
 /* 全体設定 */
 body {

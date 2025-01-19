@@ -10,6 +10,12 @@
   <style>
     body {
       font-family: 'DotGothic16', sans-serif; /* ドットゴシックに変更 */
+      display: flex;
+      flex-direction: column;
+      align-items: center; /* 中央揃え */
+      justify-content: center; /* 中央揃え */
+      min-height: 100vh; /* 画面全体の高さをカバー */
+      margin: 0;
       text-align: center;
     }
 
@@ -65,6 +71,34 @@
       text-align: center; /* ラベルを中央揃え */
       display: block; /* ブロック要素にする */
       margin-bottom: 10px; /* 下に少し余白を追加 */
+    }
+
+    header, footer {
+      width: 100%;
+      padding: 10px;
+      background-color: #ffd54f; /* パステルイエロー */
+      color: white;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    footer {
+      position: sticky;
+      bottom: 0;
+    }
+
+    main {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center; /* 中央揃え */
+      justify-content: center; /* 中央揃え */
+      width: 100%;
+      padding: 20px; /* パディングを追加して余白を確保 */
     }
   </style>
 </head>
