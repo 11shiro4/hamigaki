@@ -119,10 +119,12 @@ li {
 }
 
 .fixed-add-icon {
-  position: fixed;
+  /* 既存の fixed スタイルを削除またはコメントアウト */
+  /* position: fixed;
   bottom: 60px;
   left: 20px;
   z-index: 1000;
+  */
   background: none;
   border: none;
   padding: 0;
@@ -130,6 +132,7 @@ li {
   align-items: center;    
   justify-content: center;
   flex-direction: column;
+  margin-top: 20px; /* 空間を作成するためのマージン */
 }
 
 .fixed-add-icon img {
@@ -184,6 +187,11 @@ footer {
       <% end %>
     </div>
 
+    <%= link_to new_kid_brushing_log_path(current_kid), class: "btn-primary fixed-add-icon" do %>
+      <%= image_tag 'toothpaste.png', alt: '新しい記録を追加' %>
+      <span class="label">きろくをのこす</span>
+    <% end %>
+
     <ul>
       <% current_kid.brushing_logs.order(created_at: :desc).each do |record| %>
         <li class="log-item">
@@ -202,11 +210,6 @@ footer {
       <% end %>
     </ul>
   </main>
-
-  <%= link_to new_kid_brushing_log_path(current_kid), class: "btn-primary fixed-add-icon" do %>
-    <%= image_tag 'toothpaste.png', alt: '新しい記録を追加' %>
-    <span class="label">きろくをのこす</span>
-  <% end %>
 
   <footer>
     <p>© 2025 シャカシャカにっき All Rights Reserved.</p>
