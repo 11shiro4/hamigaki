@@ -18,8 +18,9 @@
     }
 
     header {
+      display: flex;
+      align-items: center;
       background-color: #ffc107; /* パステルイエロー */
-      text-align: center;
       padding: 20px;
       width: 100%;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -30,6 +31,7 @@
       margin: 0;
       font-size: 2rem;
       color: #fff;
+      flex-grow: 1;
     }
 
     .main-content {
@@ -89,11 +91,9 @@
       transform: scale(1.1); /* マウスオーバーで大きくなる */
     }
 
-    .back-button {
-      position: absolute;
-      left: 20px;
-      top: 50%; /* 中央垂直に配置 */
-      transform: translateY(-50%); /* 上下中央調整 */
+    .back-button img {
+      width: 40px;
+      height: 40px;
     }
 
     footer {
@@ -108,14 +108,13 @@
 </head>
 <body>
   <header>
+    <%= link_to root_path, class: "back-button" do %>
+      <%= image_tag 'arrows.png', alt: '戻る', width: 40, height: 40 %>
+    <% end %>
     <h1>サインアップ</h1>
   </header>
 
   <div class="main-content">
-    <%= link_to root_path, class: "back-button" do %>
-      <%= image_tag 'arrows.png', alt: '戻る', width: 40, height: 40 %>
-    <% end %>
-
     <div class="form-container">
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
         <% if resource.errors.any? %>
