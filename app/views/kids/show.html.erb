@@ -32,14 +32,6 @@ header h1 {
   text-align: center;
 }
 
-.user-info-header {
-  position: absolute;
-  top: 20px;
-  right: 100px;
-  text-align: right;
-  color: white;
-}
-
 .btn-primary {
   background: none;
   border: none;
@@ -173,13 +165,6 @@ footer {
       <%= image_tag 'arrows.png', alt: '戻る' %>
     <% end %>
     <h1>マイページ</h1>
-
-    <div class="user-info-header">
-      <% if @kid %>
-        <p><strong>ニックネーム:</strong> <%= @kid.nickname %></p>
-      <% end %>
-      <p><strong>ねんれい:</strong> <%= @kid.age %>さい</p>
-    </div>
 
     <%= link_to edit_kid_path(current_kid), class: "btn-primary" do %>
       <%= image_tag 'user-profile.png', alt: '編集' %>
