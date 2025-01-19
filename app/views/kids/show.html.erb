@@ -12,6 +12,10 @@ body {
   font-family: 'DotGothic16', sans-serif;
   text-align: center;
   margin: 0;
+  height: 100vh; /* ページ全体の高さをカバー */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* 全体スクロールを無効化 */
 }
 
 header {
@@ -21,7 +25,10 @@ header {
   background: #ffd54f;
   padding: 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  position: relative;
+  position: fixed; /* ヘッダーを固定表示 */
+  width: 100%;
+  top: 0;
+  z-index: 1000;
 }
 
 header h1 {
@@ -103,6 +110,7 @@ li {
 .virus-container {
   display: flex;
   justify-content: center;
+  margin-top: 20px; /* 上に余白を追加 */
   margin-bottom: 20px; /* 下に余白を追加 */
 }
 
@@ -119,12 +127,6 @@ li {
 }
 
 .fixed-add-icon {
-  /* 既存の fixed スタイルを削除またはコメントアウト */
-  /* position: fixed;
-  bottom: 60px;
-  left: 20px;
-  z-index: 1000;
-  */
   background: none;
   border: none;
   padding: 0;
@@ -155,9 +157,14 @@ footer {
   text-align: center;
   padding: 10px;
   color: white;
-  position: absolute;
-  bottom: 0;
+  position: relative; /* フッターを相対配置 */
   width: 100%;
+}
+
+main {
+  flex-grow: 1; /* メインコンテンツが残りのスペースを消費 */
+  overflow-y: auto; /* メインコンテンツにスクロールを追加 */
+  padding-top: 100px; /* ヘッダーの高さ分の余白を上部に追加 */
 }
 </style>
 
