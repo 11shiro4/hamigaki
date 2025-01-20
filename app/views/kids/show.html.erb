@@ -173,6 +173,9 @@ main {
 </head>
 <body>
   <header>
+    <%= link_to kids_path, class: "btn-primary" do %>
+      <%= image_tag 'arrows.png', alt: '戻る' %>
+    <% end %>
     <h1>マイページ</h1>
 
     <%= link_to edit_kid_path(current_kid), class: "btn-primary" do %>

@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   end
 
   get "signout", to: "kids#show", as: "signout"
+  delete "destroy_kid_session", to: "sessions#destroy"
 
   # resources :bacteria
   # resources :kids_bacteria
