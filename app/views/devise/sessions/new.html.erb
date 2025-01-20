@@ -97,10 +97,13 @@
       flex: 0 0 auto; /* 固定の高さを維持 */
     }
 
-    /* dentist-day.png のバウンスアニメーション */
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-20px); }
+    /* 歯のイラストの歩行アニメーション */
+    @keyframes walk {
+      0% { transform: translateX(0) translateY(0); }
+      25% { transform: translateX(25px) translateY(-5px); }
+      50% { transform: translateX(50px) translateY(0); }
+      75% { transform: translateX(75px) translateY(-5px); }
+      100% { transform: translateX(100px) translateY(0); }
     }
 
     .walking-image {
@@ -109,7 +112,7 @@
       left: 10px; /* 左側に配置 */
       width: 50px;
       height: 50px;
-      animation: bounce 2s infinite;
+      animation: walk 2s infinite linear; /* 歩行アニメーションに変更 */
     }
 
     @media screen and (min-width: 600px) {
@@ -125,7 +128,7 @@
   </header>
 
   <div class="main-content">
-    <img src="<%= asset_path('dentist-day.png') %>" alt="バウンス画像" class="walking-image">
+    <img src="<%= asset_path('dentist-day.png') %>" alt="歩く画像" class="walking-image">
     <div class="form-container">
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <!-- 上から二つ目のログイン見出しを削除 -->
