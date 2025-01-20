@@ -117,10 +117,6 @@
     <h1>パスワードをわすれたひと</h1>
   </header>
 
-  <%= link_to new_kid_session_path, class: "back-button" do %>
-    <%= image_tag 'arrows.png', alt: '戻る', width: 40, height: 40 %>
-  <% end %>
-
   <div class="form-container">
     <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
       <div class="field">
