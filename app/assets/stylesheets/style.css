@@ -47,11 +47,14 @@ p {
  }
  
  /* スマホ表示時 */
- @media (max-width: 768px) { /* スマホなどの画面幅が768px以下の場合 */
-  header, footer {
-    font-size: 0.8rem; /* フォントサイズを80%に縮小 */
-  }
-}
+ @media (max-width: 500px) {
+   p {
+     font-size: 20px;
+     header, footer {
+      font-size: 0.5rem; /* フォントサイズを小さくする */
+    }
+   }
+ }
 
 /* 全体設定 */
 body {
