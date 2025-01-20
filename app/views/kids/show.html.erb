@@ -87,8 +87,10 @@ li {
   font-size: 1.5rem;
 }
 
-.record-icon {
-  margin-right: 10px;
+.record-icon, .happy-face-image {
+  width: 30px;
+  height: 30px;
+  transition: transform 0.3s ease;
 }
 
 .center-content {
@@ -171,9 +173,6 @@ main {
 </head>
 <body>
   <header>
-    <%= link_to kids_path, class: "btn-primary" do %>
-      <%= image_tag 'arrows.png', alt: '戻る' %>
-    <% end %>
     <h1>マイページ</h1>
 
     <%= link_to edit_kid_path(current_kid), class: "btn-primary" do %>
@@ -207,8 +206,7 @@ main {
           <% elsif record.image.present? %>
             <%= image_tag(record.image.url) %>
           <% else %>
-            <%= image_tag 'happy-face.png', alt: 'Happy Face' %>
-          <% end %>
+            <%= image_tag 'happy-face.png', alt: 'Happy Face', class: 'happy-face-image' %>          <% end %>
           <p><%= record.created_at.in_time_zone('Asia/Tokyo').strftime("%Y/%m/%d(%a) %H:%M") %></p>
           <%= link_to [current_kid, record], method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn-secondary" do %>
             <%= image_tag 'delete.png', alt: '削除' %>
