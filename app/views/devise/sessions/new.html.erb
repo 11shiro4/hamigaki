@@ -45,6 +45,7 @@
       flex-direction: column;
       align-items: center;
       text-align: center;
+      position: relative; /* 歩く画像を相対配置する基準 */
     }
 
     .field {
@@ -107,17 +108,19 @@
     }
 
     .walking-image {
-      position: absolute; /* 相対的に固定位置にする */
-      bottom: 10%; /* 画像の位置を調整 */
-      left: 10px; /* 左側に配置 */
+      position: absolute; /* 相対的にフォーム内に配置 */
+      top: -60px; /* フォームの上に配置 */
+      left: 50%; /* 横中央に配置 */
+      transform: translateX(-50%); /* 真ん中に揃える */
       width: 50px;
       height: 50px;
-      animation: walk 2s infinite linear; /* 歩行アニメーションに変更 */
+      animation: walk 2s infinite linear;
     }
 
     @media screen and (min-width: 600px) {
       .walking-image {
-        left: 15%; /* 大きな画面では少し内側に */
+        width: 60px; /* 大きな画面では少しサイズを変更 */
+        height: 60px;
       }
     }
   </style>
@@ -128,10 +131,9 @@
   </header>
 
   <div class="main-content">
-    <img src="<%= asset_path('dentist-day.png') %>" alt="歩く画像" class="walking-image">
     <div class="form-container">
+      <img src="<%= asset_path('dentist-day.png') %>" alt="歩く画像" class="walking-image">
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        <!-- 上から二つ目のログイン見出しを削除 -->
         <div class="field">
           <%= f.label :email, "メールアドレス" %><br />
           <%= f.email_field :email, autofocus: true %>
