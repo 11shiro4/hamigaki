@@ -11,21 +11,14 @@
       box-sizing: border-box;
     }
 
-    html,
-    body,
-    ul,
-    li,
-    h1,
-    h2,
-    p,
-    div {
+    html, body, ul, li, h1, h2, p, div {
       margin: 0;
       padding: 0;
     }
 
     body {
-      font-family: 'DotGothic16', sans-serif; /* ドットゴシックフォントに変更 */
-      background: linear-gradient(90deg, #ffebee, #e8f5e9, #fffde7); /* ベビーピンク、ミントグリーン、パステルイエローのグラデーション */
+      font-family: 'DotGothic16', sans-serif;
+      background: linear-gradient(90deg, #ffebee, #e8f5e9, #fffde7);
       margin: 0;
       padding: 0;
       color: #333;
@@ -33,20 +26,20 @@
       flex-direction: column;
       height: 100vh;
       text-align: center;
-      overflow: hidden; /* エレメントのはみ出しを隠す */
+      overflow: hidden;
     }
 
     header {
-      background-color: #ffd54f; /* パステルイエロー */
+      background-color: #ffd54f;
       padding: 20px;
       width: 100%;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      position: fixed; /* 追加: ヘッダーをページの上部に固定 */
+      position: fixed;
       top: 0;
       left: 0;
       right: 0;
       flex-shrink: 0;
-      display: flex; /* フレックスボックスレイアウトを使用 */
+      display: flex;
       justify-content: center;
       align-items: center;
     }
@@ -55,22 +48,6 @@
       margin: 0;
       font-size: 2.0rem;
       color: #fff;
-    }
-
-    .link-back {
-      position: absolute; /* ヘッダー内に絶対位置 */
-      left: 20px; /* 左側に若干内側に配置 */
-    }
-
-    .link-back img {
-      width: 40px; /* 幅 */
-      height: 40px; /* 高さ */
-      margin-right: 10px; /* テキストとの間隔を調整 */
-      transition: transform 0.3s; /* 動きにアニメーションを追加（オプション） */
-    }
-
-    .link-back img:hover {
-      transform: translateY(-5px); /* ホバー時に少し上に移動 */
     }
 
     main {
@@ -83,59 +60,59 @@
       text-align: center;
       max-width: 800px;
       margin: 0 auto;
-      margin-top: 80px; /* フォームの位置を上に調整 */
+      margin-top: 80px;
     }
 
-    main .field {
-      margin-bottom: 15px; /* 各フィールドの間隔を狭める */
-      display: flex; /* 各フィールドを横並びにする */
-      align-items: center; /* フィールド内の要素を中央揃えにする */
-      width: 100%; /* 幅を100%にする */
-      justify-content: center; /* 中央揃えにする */
+    .form-container {
+      position: relative;
     }
 
-    main .field label {
-      width: 150px; /* ラベルの幅を固定 */
-      text-align: center; /* ラベルを中央揃えにする */
-      margin-right: 10px; /* ラベルと入力フィールドの間隔を設定 */
+    .field {
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    main .field input {
-      display: block;
-      width: calc(100% - 160px); /* ラベルの幅を引いた残りの幅を設定 */
-      text-align: center; /* テキストを中央揃えにする */
-      font-size: 1rem; /* 字の大きさを調整 */
+    .field label {
+      width: 150px;
+      text-align: center;
+      margin-right: 10px;
+    }
+
+    .field input {
+      width: calc(100% - 160px);
+      text-align: center;
+      font-size: 1rem;
       padding: 10px;
-      border: 2px solid #90caf9; /* ソフトブルー */
+      border: 2px solid #90caf9;
       border-radius: 5px;
       margin-bottom: 10px;
     }
 
-    main .actions {
+    .actions {
       margin-top: 20px;
-      text-align: center;
     }
 
     .btn-primary {
-      background: #ff69b4; /* ホットピンク */
+      background: #ff69b4;
       border: none;
-      border-radius: 20px; /* 円形にする */
+      border-radius: 20px;
       padding: 10px 20px;
       font-size: 1.2rem;
       color: white;
       cursor: pointer;
       text-shadow: 1px 1px 2px #555;
-      transition: background 0.3s, transform 0.3s ease; /* transform の追加 */
-      text-decoration: none;
+      transition: background 0.3s, transform 0.3s ease;
     }
 
     .btn-primary:hover {
       background-color: #ff85c2;
-      transform: scale(1.1); /* ホバー時に大きくする */
+      transform: scale(1.1);
     }
 
     footer {
-      background-color: #ffd54f; /* パステルイエロー */
+      background-color: #ffd54f;
       text-align: center;
       padding: 10px;
       color: white;
@@ -145,30 +122,23 @@
       width: 100%;
     }
 
-    /* フォーム */
-    form {
-      background: #e3f2fd; /* ライトブルー */
-      border: 2px solid #90caf9; /* ソフトブルー */
-      border-radius: 10px;
-      padding: 20px;
-      margin: 20px 0;
-      width: 100%;
-      max-width: 600px; /* フォーム全体の最大幅を設定 */
+    /* アニメーション */
+    @keyframes walk {
+      0% { transform: translateX(0) translateY(0); }
+      25% { transform: translateX(25px) translateY(-5px); }
+      50% { transform: translateX(50px) translateY(0); }
+      75% { transform: translateX(75px) translateY(-5px); }
+      100% { transform: translateX(100px) translateY(0); }
     }
 
-    form label {
-      display: block;
-      margin-bottom: 5px;
-      font-weight: bold;
-    }
-
-    form input,
-    form textarea {
-      width: 100%;
-      padding: 10px;
-      border: 2px solid #90caf9; /* ソフトブルー */
-      border-radius: 5px;
-      margin-bottom: 10px;
+    .walking-image {
+      position: absolute;
+      top: -60px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 50px;
+      height: 50px;
+      animation: walk 2s infinite linear;
     }
   </style>
 </head>
@@ -178,37 +148,40 @@
   </header>
 
   <main>
-    <%= form_with(model: @kid, local: true) do |form| %>
-      <% if @kid.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@kid.errors.count, "エラー") %> が発生しました:</h2>
-          <ul>
-          <% @kid.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-          </ul>
+    <div class="form-container">
+      <img src="<%= asset_path('dentist-day.png') %>" alt="歩く画像" class="walking-image">
+      <%= form_with(model: @kid, local: true) do |form| %>
+        <% if @kid.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@kid.errors.count, "エラー") %> が発生しました:</h2>
+            <ul>
+            <% @kid.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <div class="field">
+          <%= form.label :nickname, "ニックネーム" %>
+          <%= form.text_field :nickname %>
+        </div>
+
+        <div class="field">
+          <%= form.label :email, "メールアドレス" %>
+          <%= form.email_field :email %>
+        </div>
+
+        <div class="field">
+          <%= form.label :age, "年齢" %>
+          <%= form.number_field :age %>
+        </div>
+
+        <div class="actions">
+          <%= form.submit "OK", class: "btn-primary" %>
         </div>
       <% end %>
-
-      <div class="field">
-        <%= form.label :nickname, "ニックネーム" %>
-        <%= form.text_field :nickname %>
-      </div>
-
-      <div class="field">
-        <%= form.label :email, "メールアドレス" %>
-        <%= form.email_field :email %>
-      </div>
-
-      <div class="field">
-        <%= form.label :age, "年齢" %>
-        <%= form.number_field :age %>
-      </div>
-
-      <div class="actions">
-        <%= form.submit "OK", class: "btn-primary" %>
-      </div>
-    <% end %>
+    </div>
   </main>
 
   <footer>
