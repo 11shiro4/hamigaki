@@ -64,7 +64,7 @@ end
 
 gem "devise"
 
-gem "carrierwave", "~> 2.0"
+gem "carrierwave", "~> 3.1"
 
 group :production do
 gem "pg"
